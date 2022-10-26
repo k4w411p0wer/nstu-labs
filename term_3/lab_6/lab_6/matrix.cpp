@@ -356,3 +356,37 @@ VectorH VectorV::transpose() const {
   return VectorH(Matrix::transpose());
 }
 
+Matrix::OutOfRange::OutOfRange() {
+  _message = new char[12];
+  strcpy(_message, "out of range");
+};
+
+Matrix::OutOfRange::OutOfRange(std::size_t row, std::size_t col)
+    : _row(row), _col(col) {
+  _message = new char[20 + 2 * std::numeric_limits<std::size_t>().max_digits10];
+  strcat(_message, "(");
+  sprintf(_message + 1, "%lu", _row);
+  strcat(_message + strlen(_message), ", ");
+  sprintf(_message + strlen(_message), "%lu", _col);
+  strcat(_message + strlen(_message), ") is out of range");
+}
+
+Matrix::OutOfRange::~OutOfRange() {
+  delete _message;
+}
+
+const char *Matrix::OutOfRange::what() const noexcept {
+  return _message;
+}
+
+void Matrix::_init(const std::size_t rows, const std::size_t cols) {
+  _rows = rows;
+  _cols = cols;
+  size_t size = _rows * _cols;
+  if (size > 0)
+    _data = new MATRIX_DATATYPE[size];
+}
+
+const char *Matrix::BadSize::what() const noexcept {
+  return "Bad matrixes size";
+}

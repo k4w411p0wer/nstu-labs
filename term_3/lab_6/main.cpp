@@ -151,5 +151,19 @@ int main() {
   cq.print();
   TESTCASE_END();
 
+  TESTCASE_BEGIN("Exceptions")
+  Matrix m = Matrix::fill(5, 5, 5);
+  try {
+    m(6, 6);
+  } catch (Matrix::OutOfRange &e) {
+    std::cout << e.what() << std::endl;
+  }
+  try {
+    VectorH vech(m);
+  } catch (Matrix::BadSize &e) {
+    std::cout << e.what() << std::endl;
+  }
+  TESTCASE_END();
+
   return 0;
 }

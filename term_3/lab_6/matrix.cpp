@@ -11,11 +11,6 @@
 #include <iostream>
 
 
-#define _ASSERT_INDEXES(SELF, OTHER)                                           \
-  assert((SELF).getRows() == (OTHER).getRows()                                 \
-         && (SELF).getCols() == (OTHER).getCols());
-
-
 Matrix::Matrix() : Matrix(0, 0) {}
 
 Matrix::Matrix(const std::size_t rows, const std::size_t cols) {
@@ -42,7 +37,8 @@ Matrix::~Matrix() {
 }
 
 Matrix Matrix::plus(const Matrix &other) const {
-  _ASSERT_INDEXES(*this, other);
+  if (getRows() != other.getRows() || getCols() != other.getCols())
+    throw BadSize();
 
   Matrix result(_rows, _cols);
 
@@ -107,18 +103,6 @@ Matrix Matrix::fill(std::size_t rows, std::size_t cols, MATRIX_DATATYPE value) {
   return result;
 }
 
-// Matrix Matrix::diagonal(size_t size, MATRIX_DATATYPE value) {
-//   Matrix result = Matrix::zeros(size);
-//   for (size_t i = 0; i < result.getSize(); ++i) {
-//     result(i, i) = value;
-//   }
-//   return result;
-// }
-
-// Matrix Matrix::identity(size_t size) {
-//   return Matrix::diagonal(size, 1);
-// }
-
 Matrix Matrix::zeros(std::size_t rows, std::size_t cols) {
   return Matrix::fill(rows, cols, 0.0);
 }
@@ -128,7 +112,8 @@ Matrix Matrix::operator+() const {
 }
 
 Matrix Matrix::operator+(const Matrix &other) const {
-  _ASSERT_INDEXES(*this, other);
+  if (getRows() != other.getRows() || getCols() != other.getCols())
+    throw BadSize();
   Matrix result(*this);
 
   for (std::size_t row = 0; row < _rows; ++row) {
@@ -212,7 +197,9 @@ const Matrix operator-(const Matrix &matrix) {
 }
 
 const Matrix operator-(const Matrix &matrix, const Matrix &other) {
-  _ASSERT_INDEXES(matrix, other);
+  if (matrix.getRows() != other.getRows()
+      || matrix.getCols() != other.getCols())
+    throw Matrix::BadSize();
   const Matrix o = -other;
   return matrix + o;
 }
@@ -285,7 +272,8 @@ File &operator<<(File &file, const Matrix &matrix) {
 
 SquareMatrix::SquareMatrix(const Matrix &matrix)
     : Matrix(dynamic_cast<const Matrix &>(matrix)) {
-  assert(matrix.getRows() == matrix.getCols());
+  if (matrix.getRows() != matrix.getCols())
+    throw BadSize();
 }
 
 SquareMatrix SquareMatrix::fill(std::size_t size, MATRIX_DATATYPE value) {
@@ -318,7 +306,8 @@ SquareMatrix SquareMatrix::operator=(const SquareMatrix &other) noexcept {
 
 VectorH::VectorH(const Matrix &matrix)
     : Matrix(dynamic_cast<const Matrix &>(matrix)) {
-  assert(matrix.getRows() == 1);
+  if (matrix.getRows() != 1)
+    throw BadSize();
 }
 
 void VectorH::fprint(std::ostream &stream) const {
@@ -334,7 +323,8 @@ void VectorH::fprint(std::ostream &stream) const {
 
 VectorV::VectorV(const Matrix &matrix)
     : Matrix(dynamic_cast<const Matrix &>(matrix)) {
-  assert(matrix.getCols() == 1);
+  if (matrix.getCols() != 1)
+    throw BadSize();
 }
 void VectorV::fprint(std::ostream &stream) const {
   std::cout << "[";
@@ -356,3 +346,37 @@ VectorH VectorV::transpose() const {
   return VectorH(Matrix::transpose());
 }
 
+Matrix::OutOfRange::OutOfRange() {
+  _message = new char[12];
+  strcpy(_message, "out of range");
+};
+
+Matrix::OutOfRange::OutOfRange(std::size_t row, std::size_t col)
+    : _row(row), _col(col) {
+  _message = new char[20 + 2 * std::numeric_limits<std::size_t>().max_digits10];
+  strcpy(_message, "(");
+  sprintf(_message + 1, "%lu", _row);
+  strcat(_message + strlen(_message), ", ");
+  sprintf(_message + strlen(_message), "%lu", _col);
+  strcat(_message + strlen(_message), ") is out of range");
+}
+
+Matrix::OutOfRange::~OutOfRange() {
+  delete _message;
+}
+
+const char *Matrix::OutOfRange::what() const noexcept {
+  return _message;
+}
+
+void Matrix::_init(const std::size_t rows, const std::size_t cols) {
+  _rows = rows;
+  _cols = cols;
+  size_t size = _rows * _cols;
+  if (size > 0)
+    _data = new MATRIX_DATATYPE[size];
+}
+
+const char *Matrix::BadSize::what() const noexcept {
+  return "Bad matrixes size";
+}

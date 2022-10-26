@@ -151,5 +151,14 @@ int main() {
   cq.print();
   TESTCASE_END();
 
+  TESTCASE_BEGIN("Exceptions")
+  Matrix m = Matrix::fill(5, 5, 5);
+  try {
+    m(6, 6);
+  } catch (MatrixOutOfRange &e) {
+    e.what();
+  }
+  TESTCASE_END();
+
   return 0;
 }
