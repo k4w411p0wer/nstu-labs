@@ -141,13 +141,24 @@ int main() {
 
   TESTCASE_BEGIN("CircularDoubleLinkedList");
   CircularQueueOfMatrix cq;
-  Matrix *m = new Matrix[5];
-  for (std::size_t i = 0; i < 5; ++i) {
-    m[i] = Matrix::fill(i + 1, i + 1, i + 1);
-    cq.add(m[i]);
-  }
+  Matrix *m1 = new Matrix(5, 5);
+  *m1 = Matrix::fill(5, 5, 5);
+  Matrix *m2 = new VectorH(5);
+
+  cq.add(*m1);
+  cq.add(*m2);
+
   cq.print();
   cq.remove();
+  cq.print();
+  cq.remove();
+  cq.print();
+  try {
+    cq.remove();
+  } catch (CircularQueueOfMatrix::NotEnoughOfItems &e) {
+    std::cout << "Exception: " << e.what() << std::endl;
+  }
+
   cq.print();
   TESTCASE_END();
 
@@ -156,12 +167,12 @@ int main() {
   try {
     m(6, 6);
   } catch (Matrix::OutOfRange &e) {
-    std::cout << e.what() << std::endl;
+    std::cout << "Exception: " << e.what() << std::endl;
   }
   try {
     VectorH vech(m);
   } catch (Matrix::BadSize &e) {
-    std::cout << e.what() << std::endl;
+    std::cout << "Exception: " << e.what() << std::endl;
   }
   TESTCASE_END();
 

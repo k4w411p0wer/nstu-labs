@@ -51,10 +51,16 @@ void CircularQueueOfMatrix::add(Matrix &m) {
   }
 }
 Matrix &CircularQueueOfMatrix::remove() {
+  if (_head == nullptr)
+    throw NotEnoughOfItems();
   Matrix &result = _head->getPrev()->getMatrix();
   CircularQueueOfMatrixNode *prev = _head->getPrev();
-  prev->getPrev()->setNext(_head);
-  _head->setPrev(prev->getPrev());
+  if (_head == prev)
+    _head = nullptr;
+  else {
+    prev->getPrev()->setNext(_head);
+    _head->setPrev(prev->getPrev());
+  }
   delete prev;
   return result;
 }
@@ -63,8 +69,10 @@ void CircularQueueOfMatrix::fprint(std::ostream &os) {
   int num = 0;
   CircularQueueOfMatrixNode *iterator = _head;
   do {
-    if (!iterator)
-      break;
+    if (!iterator) {
+      os << "No items" << std::endl;
+      return;
+    }
     os << "(" << num++ << "): " << std::endl;
     iterator->getMatrix().fprint(os);
     iterator = iterator->getNext();
@@ -72,4 +80,8 @@ void CircularQueueOfMatrix::fprint(std::ostream &os) {
 }
 void CircularQueueOfMatrix::print() {
   fprint(std::cout);
+}
+
+const char *CircularQueueOfMatrix::NotEnoughOfItems::what() const noexcept {
+  return "Not enough elements in matrix";
 }

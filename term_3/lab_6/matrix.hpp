@@ -62,6 +62,7 @@ class Matrix {
 
   friend File &operator>>(File &, Matrix &);
   friend File &operator<<(File &, const Matrix &);
+
   class OutOfRange : public std::exception {
 private:
     std::size_t _row, _col;
@@ -73,6 +74,7 @@ public:
     ~OutOfRange();
     const char *what() const noexcept;
   };
+
   class BadSize : public std::exception {
 public:
     const char *what() const noexcept;

@@ -1,6 +1,7 @@
 #pragma once
 
 #include "matrix.hpp"
+#include <exception>
 #include <ostream>
 
 
@@ -32,4 +33,9 @@ class CircularQueueOfMatrix {
   Matrix &remove();
   void fprint(std::ostream &);
   void print();
+
+  class NotEnoughOfItems : public std::exception {
+public:
+    const char *what() const noexcept;
+  };
 };
