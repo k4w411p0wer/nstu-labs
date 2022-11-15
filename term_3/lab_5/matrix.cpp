@@ -15,6 +15,13 @@
   assert((SELF).getRows() == (OTHER).getRows()                                 \
          && (SELF).getCols() == (OTHER).getCols());
 
+void Matrix::_init(const std::size_t rows, const std::size_t cols) {
+  _rows = rows;
+  _cols = cols;
+  size_t size = _rows * _cols;
+  if (size > 0)
+    _data = new MATRIX_DATATYPE[size];
+}
 
 Matrix::Matrix() : Matrix(0, 0) {}
 
@@ -195,15 +202,12 @@ Matrix &Matrix::operator=(const Matrix &other) noexcept {
 }
 
 MATRIX_DATATYPE Matrix::operator()(size_t row, size_t col) const {
-  if (row >= _rows || col >= _cols)
-    throw OutOfRange(row, col);
-
+  assert(row <= _rows && col <= _cols);
   return _data[row * _cols + col];
 }
 
 MATRIX_DATATYPE &Matrix::operator()(size_t row, size_t col) {
-  if (row >= _rows || col >= _cols)
-    throw OutOfRange(row, col);
+  assert(row <= _rows && col <= _cols);
   return _data[row * _cols + col];
 }
 
@@ -355,4 +359,3 @@ VectorV VectorH::transpose() const {
 VectorH VectorV::transpose() const {
   return VectorH(Matrix::transpose());
 }
-

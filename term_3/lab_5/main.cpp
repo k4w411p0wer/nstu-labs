@@ -139,16 +139,23 @@ int main() {
   vech.transpose().print();
   TESTCASE_END();
 
-  TESTCASE_BEGIN("CircularDoubleLinkedList");
+  TESTCASE_BEGIN("CircularQueue");
   CircularQueueOfMatrix cq;
-  Matrix *m = new Matrix[5];
-  for (std::size_t i = 0; i < 5; ++i) {
-    m[i] = Matrix::fill(i + 1, i + 1, i + 1);
-    cq.add(m[i]);
+  Matrix **m = new Matrix *[2];
+  m[0] = new Matrix(5, 5);
+  m[1] = new VectorH(5);
+
+  for (std::size_t i = 0; i < 2; ++i) {
+    cq.add(*m[i]);
   }
   cq.print();
-  cq.remove();
+  for (std::size_t i = 0; i < 2; ++i) {
+    // cq.print();
+    cq.remove();
+  }
   cq.print();
+
+  // cq.remove();
   TESTCASE_END();
 
   return 0;

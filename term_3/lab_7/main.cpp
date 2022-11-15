@@ -1,13 +1,17 @@
 #include "CircularQueue.hpp"
 
-
 int main() {
   CircularQueue<int> cqueue(5);
+  CircularQueue<double, 4> cq1;
+  CircularQueue<float, 4> cq2(5);
 
   cqueue.print();
+  cq1.print();
+  cq2.print();
+
   try {
     cqueue.remove();
-  } catch (CircularQueueIsClear &e) {
+  } catch (CircularQueue<int>::CircularQueueIsClear &e) {
     std::cout << e.what() << std::endl;
   }
 
@@ -27,7 +31,6 @@ int main() {
   cqueue.print();
   cqueue.add(6);
   cqueue.print();
-
 
   return 0;
 }
