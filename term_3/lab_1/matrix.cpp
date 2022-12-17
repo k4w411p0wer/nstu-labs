@@ -2,11 +2,10 @@
 
 #include <cmath>
 #include <cstddef>
+#include <iomanip>
 #include <iostream>
 #include <limits>
 #include <ostream>
-#include <iomanip>
-
 
 void Matrix::init(size_t size) {
   this->size = size;
@@ -15,13 +14,9 @@ void Matrix::init(size_t size) {
     this->data = new MATRIX_DATATYPE[s];
 }
 
-Matrix::Matrix() {
-  this->init(0);
-}
+Matrix::Matrix() { this->init(0); }
 
-Matrix::Matrix(const size_t size) {
-  this->init(size);
-}
+Matrix::Matrix(const size_t size) { this->init(size); }
 
 Matrix::Matrix(const Matrix &matrix) {
   size_t size = matrix.getSize();
@@ -46,7 +41,7 @@ Matrix Matrix::plus(const Matrix &other) const {
   return matrix;
 }
 
-Matrix Matrix::transpose() const {  // TODO: rewrite
+Matrix Matrix::transpose() const { // TODO: rewrite
   Matrix result(this->size);
 
   for (size_t i = 0; i < result.getSize(); ++i) {
@@ -56,7 +51,6 @@ Matrix Matrix::transpose() const {  // TODO: rewrite
       result.set(j, i, tmp);
     }
   }
-
 
   // for (size_t i = 0; i < this->size; ++i) {
   //   for (size_t j = 0; j < this->size; ++j) {
@@ -96,9 +90,7 @@ void Matrix::set(size_t x, size_t y, MATRIX_DATATYPE v) {
   this->data[x * this->size + y] = v;
 }
 
-size_t Matrix::getSize() const {
-  return this->size;
-}
+size_t Matrix::getSize() const { return this->size; }
 
 Matrix Matrix::fill(size_t size, MATRIX_DATATYPE value) {
   Matrix result(size);
@@ -117,10 +109,6 @@ Matrix Matrix::diagonal(size_t size, MATRIX_DATATYPE value) {
   return result;
 }
 
-Matrix Matrix::identity(size_t size) {
-  return Matrix::diagonal(size, 1);
-}
+Matrix Matrix::identity(size_t size) { return Matrix::diagonal(size, 1); }
 
-Matrix Matrix::zeros(size_t size) {
-  return Matrix::fill(size, 0.0);
-}
+Matrix Matrix::zeros(size_t size) { return Matrix::fill(size, 0.0); }
