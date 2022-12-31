@@ -127,7 +127,7 @@ int main() {
   TESTCASE_BEGIN("Overload vectors print");
   VectorH vec = Matrix::fill(1, 10, 5);
   vec.print();
-  static_cast<Matrix &>(vec).print();
+  reinterpret_cast<Matrix *>(&vec)->print();
   TESTCASE_END();
 
   TESTCASE_BEGIN("VectorH to VectorV");

@@ -143,6 +143,7 @@ int main() {
   CircularQueueOfMatrix cq;
   Matrix **m = new Matrix *[2];
   m[0] = new Matrix(5, 5);
+  *m[0] = SquareMatrix::identity(5);
   m[1] = new VectorH(5);
 
   for (std::size_t i = 0; i < 2; ++i) {
@@ -150,12 +151,9 @@ int main() {
   }
   cq.print();
   for (std::size_t i = 0; i < 2; ++i) {
-    // cq.print();
     cq.remove();
   }
   cq.print();
-
-  // cq.remove();
   TESTCASE_END();
 
   return 0;

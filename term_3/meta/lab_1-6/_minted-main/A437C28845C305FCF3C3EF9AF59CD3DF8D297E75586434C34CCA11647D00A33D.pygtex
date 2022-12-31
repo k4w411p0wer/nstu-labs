@@ -1,0 +1,18 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+cp}{\PYGZsh{}include}\PYG{+w}{ }\PYG{c+cpf}{\PYGZlt{}fstream\PYGZgt{}}
+\PYG{c+cp}{\PYGZsh{}include}\PYG{+w}{ }\PYG{c+cpf}{\PYGZlt{}ios\PYGZgt{}}
+
+
+\PYG{k}{class}\PYG{+w}{ }\PYG{n+nc}{File}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{  }\PYG{k}{private}\PYG{o}{:}
+\PYG{+w}{  }\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{\PYGZus{}mode}\PYG{p}{;}
+\PYG{+w}{  }\PYG{n}{std}\PYG{o}{::}\PYG{n}{fstream}\PYG{+w}{ }\PYG{n}{\PYGZus{}fs}\PYG{p}{;}
+
+\PYG{+w}{  }\PYG{k}{public}\PYG{o}{:}
+\PYG{+w}{  }\PYG{n}{File}\PYG{p}{(}\PYG{k}{const}\PYG{+w}{ }\PYG{k+kt}{char}\PYG{+w}{ }\PYG{o}{*}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{std}\PYG{o}{::}\PYG{n}{ios\PYGZus{}base}\PYG{o}{::}\PYG{n}{openmode}\PYG{p}{);}
+\PYG{+w}{  }\PYG{o}{\PYGZti{}}\PYG{n}{File}\PYG{p}{();}
+\PYG{+w}{  }\PYG{k+kt}{void}\PYG{+w}{ }\PYG{n+nf}{close}\PYG{p}{();}
+\PYG{+w}{  }\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n+nf}{getMode}\PYG{p}{();}
+\PYG{+w}{  }\PYG{n}{std}\PYG{o}{::}\PYG{n}{fstream}\PYG{+w}{ }\PYG{o}{\PYGZam{}}\PYG{n+nf}{getFStream}\PYG{p}{();}
+\PYG{p}{\PYGZcb{};}
+\end{Verbatim}

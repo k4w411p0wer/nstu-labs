@@ -1,0 +1,6 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kt}{void}\PYG{+w}{ }\PYG{n+nf}{SortedStringArray::close}\PYG{p}{()}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{  }\PYG{n}{\PYGZus{}write\PYGZus{}header}\PYG{p}{();}
+\PYG{+w}{  }\PYG{n}{std}\PYG{o}{::}\PYG{n}{fstream}\PYG{o}{::}\PYG{n}{close}\PYG{p}{();}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

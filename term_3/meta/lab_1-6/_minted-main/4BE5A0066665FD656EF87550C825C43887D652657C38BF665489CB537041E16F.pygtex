@@ -1,0 +1,92 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+cp}{\PYGZsh{}include}\PYG{+w}{ }\PYG{c+cpf}{\PYGZdq{}circularqueue.hpp\PYGZdq{}}
+\PYG{c+cp}{\PYGZsh{}include}\PYG{+w}{ }\PYG{c+cpf}{\PYGZlt{}cassert\PYGZgt{}}
+\PYG{c+cp}{\PYGZsh{}include}\PYG{+w}{ }\PYG{c+cpf}{\PYGZlt{}iostream\PYGZgt{}}
+\PYG{c+cp}{\PYGZsh{}include}\PYG{+w}{ }\PYG{c+cpf}{\PYGZlt{}ostream\PYGZgt{}}
+
+
+\PYG{n}{CircularQueueOfMatrixNode}\PYG{o}{::}\PYG{n}{CircularQueueOfMatrixNode}\PYG{p}{(}\PYG{n}{Matrix}\PYG{+w}{ }\PYG{o}{\PYGZam{}}\PYG{n}{\PYGZus{}matrix}\PYG{p}{)}
+\PYG{+w}{    }\PYG{o}{:}\PYG{+w}{ }\PYG{n}{\PYGZus{}data}\PYG{p}{(}\PYG{n}{\PYGZus{}matrix}\PYG{p}{),}\PYG{+w}{ }\PYG{n}{\PYGZus{}next}\PYG{p}{(}\PYG{k}{nullptr}\PYG{p}{),}\PYG{+w}{ }\PYG{n}{\PYGZus{}prev}\PYG{p}{(}\PYG{k}{nullptr}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{\PYGZob{}\PYGZcb{}}
+
+\PYG{n}{CircularQueueOfMatrixNode}\PYG{+w}{ }\PYG{o}{*}\PYG{n}{CircularQueueOfMatrixNode}\PYG{o}{::}\PYG{n}{getPrev}\PYG{p}{()}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{  }\PYG{k}{return}\PYG{+w}{ }\PYG{n}{\PYGZus{}prev}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{k+kt}{void}\PYG{+w}{ }\PYG{n}{CircularQueueOfMatrixNode}\PYG{o}{::}\PYG{n}{setPrev}\PYG{p}{(}\PYG{n}{CircularQueueOfMatrixNode}\PYG{+w}{ }\PYG{o}{*}\PYG{n}{prev}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{  }\PYG{n}{\PYGZus{}prev}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{prev}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{n}{CircularQueueOfMatrixNode}\PYG{+w}{ }\PYG{o}{*}\PYG{n}{CircularQueueOfMatrixNode}\PYG{o}{::}\PYG{n}{getNext}\PYG{p}{()}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{  }\PYG{k}{return}\PYG{+w}{ }\PYG{n}{\PYGZus{}next}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{k+kt}{void}\PYG{+w}{ }\PYG{n}{CircularQueueOfMatrixNode}\PYG{o}{::}\PYG{n}{setNext}\PYG{p}{(}\PYG{n}{CircularQueueOfMatrixNode}\PYG{+w}{ }\PYG{o}{*}\PYG{n}{next}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{  }\PYG{n}{\PYGZus{}next}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{next}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{n}{Matrix}\PYG{+w}{ }\PYG{o}{\PYGZam{}}\PYG{n}{CircularQueueOfMatrixNode}\PYG{o}{::}\PYG{n}{getMatrix}\PYG{p}{()}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{  }\PYG{k}{return}\PYG{+w}{ }\PYG{n}{\PYGZus{}data}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{n}{CircularQueueOfMatrix}\PYG{o}{::}\PYG{n}{CircularQueueOfMatrix}\PYG{p}{()}\PYG{+w}{ }\PYG{o}{:}\PYG{+w}{ }\PYG{n}{\PYGZus{}head}\PYG{p}{(}\PYG{k}{nullptr}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{\PYGZob{}\PYGZcb{}}
+
+\PYG{n}{CircularQueueOfMatrix}\PYG{o}{::\PYGZti{}}\PYG{n}{CircularQueueOfMatrix}\PYG{p}{()}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{  }\PYG{n}{CircularQueueOfMatrixNode}\PYG{+w}{ }\PYG{o}{*}\PYG{n}{iterator}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{\PYGZus{}head}\PYG{p}{,}\PYG{+w}{ }\PYG{o}{*}\PYG{n}{next}\PYG{p}{;}
+\PYG{+w}{  }\PYG{k}{do}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{    }\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{o}{!}\PYG{n}{iterator}\PYG{p}{)}
+\PYG{+w}{      }\PYG{k}{break}\PYG{p}{;}
+\PYG{+w}{    }\PYG{n}{next}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{iterator}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{getNext}\PYG{p}{();}
+\PYG{+w}{    }\PYG{k}{delete}\PYG{+w}{ }\PYG{n}{iterator}\PYG{p}{;}
+\PYG{+w}{    }\PYG{n}{iterator}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{next}\PYG{p}{;}
+\PYG{+w}{  }\PYG{p}{\PYGZcb{}}\PYG{+w}{ }\PYG{k}{while}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{iterator}\PYG{+w}{ }\PYG{o}{!=}\PYG{+w}{ }\PYG{n}{\PYGZus{}head}\PYG{p}{);}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{k+kt}{void}\PYG{+w}{ }\PYG{n}{CircularQueueOfMatrix}\PYG{o}{::}\PYG{n}{add}\PYG{p}{(}\PYG{n}{Matrix}\PYG{+w}{ }\PYG{o}{\PYGZam{}}\PYG{n}{m}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{  }\PYG{n}{CircularQueueOfMatrixNode}\PYG{+w}{ }\PYG{o}{*}\PYG{n}{node}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k}{new}\PYG{+w}{ }\PYG{n}{CircularQueueOfMatrixNode}\PYG{p}{(}\PYG{n}{m}\PYG{p}{);}
+\PYG{+w}{  }\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{\PYGZus{}head}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{    }\PYG{n}{node}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{setNext}\PYG{p}{(}\PYG{n}{\PYGZus{}head}\PYG{p}{);}
+\PYG{+w}{    }\PYG{n}{node}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{setPrev}\PYG{p}{(}\PYG{n}{\PYGZus{}head}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{getPrev}\PYG{p}{());}
+\PYG{+w}{    }\PYG{n}{\PYGZus{}head}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{getPrev}\PYG{p}{()}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{setNext}\PYG{p}{(}\PYG{n}{node}\PYG{p}{);}
+\PYG{+w}{    }\PYG{n}{\PYGZus{}head}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{setPrev}\PYG{p}{(}\PYG{n}{node}\PYG{p}{);}
+\PYG{+w}{  }\PYG{p}{\PYGZcb{}}\PYG{+w}{ }\PYG{k}{else}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{    }\PYG{n}{node}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{setNext}\PYG{p}{(}\PYG{n}{node}\PYG{p}{);}
+\PYG{+w}{    }\PYG{n}{node}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{setPrev}\PYG{p}{(}\PYG{n}{node}\PYG{p}{);}
+\PYG{+w}{    }\PYG{n}{\PYGZus{}head}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{node}\PYG{p}{;}
+\PYG{+w}{  }\PYG{p}{\PYGZcb{}}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{n}{Matrix}\PYG{+w}{ }\PYG{o}{\PYGZam{}}\PYG{n}{CircularQueueOfMatrix}\PYG{o}{::}\PYG{n}{remove}\PYG{p}{()}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{  }\PYG{n}{assert}\PYG{p}{(}\PYG{n}{\PYGZus{}head}\PYG{+w}{ }\PYG{o}{!=}\PYG{+w}{ }\PYG{k}{nullptr}\PYG{p}{);}\PYG{+w}{  }\PYG{c+c1}{// can be replaced with exceptions}
+\PYG{+w}{  }\PYG{n}{Matrix}\PYG{+w}{ }\PYG{o}{\PYGZam{}}\PYG{n}{result}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{\PYGZus{}head}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{getMatrix}\PYG{p}{();}
+\PYG{+w}{  }\PYG{n}{CircularQueueOfMatrixNode}\PYG{+w}{ }\PYG{o}{*}\PYG{n}{next}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{\PYGZus{}head}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{getNext}\PYG{p}{(),}\PYG{+w}{ }\PYG{o}{*}\PYG{n}{prev}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{\PYGZus{}head}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{getPrev}\PYG{p}{();}
+\PYG{+w}{  }\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{\PYGZus{}head}\PYG{+w}{ }\PYG{o}{==}\PYG{+w}{ }\PYG{n}{next}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{    }\PYG{k}{delete}\PYG{+w}{ }\PYG{n}{\PYGZus{}head}\PYG{p}{;}
+\PYG{+w}{    }\PYG{n}{\PYGZus{}head}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k}{nullptr}\PYG{p}{;}
+\PYG{+w}{    }\PYG{k}{return}\PYG{+w}{ }\PYG{n}{result}\PYG{p}{;}
+\PYG{+w}{  }\PYG{p}{\PYGZcb{}}
+\PYG{+w}{  }\PYG{n}{prev}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{setNext}\PYG{p}{(}\PYG{n}{next}\PYG{p}{);}
+\PYG{+w}{  }\PYG{n}{next}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{setPrev}\PYG{p}{(}\PYG{n}{prev}\PYG{p}{);}
+
+\PYG{+w}{  }\PYG{k}{delete}\PYG{+w}{ }\PYG{n}{\PYGZus{}head}\PYG{p}{;}
+\PYG{+w}{  }\PYG{n}{\PYGZus{}head}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{next}\PYG{p}{;}
+\PYG{+w}{  }\PYG{k}{return}\PYG{+w}{ }\PYG{n}{result}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{k+kt}{void}\PYG{+w}{ }\PYG{n}{CircularQueueOfMatrix}\PYG{o}{::}\PYG{n}{fprint}\PYG{p}{(}\PYG{n}{std}\PYG{o}{::}\PYG{n}{ostream}\PYG{+w}{ }\PYG{o}{\PYGZam{}}\PYG{n}{os}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{  }\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{num}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mi}{0}\PYG{p}{;}
+\PYG{+w}{  }\PYG{n}{CircularQueueOfMatrixNode}\PYG{+w}{ }\PYG{o}{*}\PYG{n}{iterator}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{\PYGZus{}head}\PYG{p}{;}
+\PYG{+w}{  }\PYG{k}{do}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{    }\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{o}{!}\PYG{n}{iterator}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{      }\PYG{n}{os}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZlt{}}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}Queue is clear\PYGZdq{}}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZlt{}}\PYG{+w}{ }\PYG{n}{std}\PYG{o}{::}\PYG{n}{endl}\PYG{p}{;}
+\PYG{+w}{      }\PYG{k}{break}\PYG{p}{;}
+\PYG{+w}{    }\PYG{p}{\PYGZcb{}}
+\PYG{+w}{    }\PYG{n}{os}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZlt{}}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}(\PYGZdq{}}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZlt{}}\PYG{+w}{ }\PYG{n}{num}\PYG{o}{++}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZlt{}}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}): \PYGZdq{}}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZlt{}}\PYG{+w}{ }\PYG{n}{std}\PYG{o}{::}\PYG{n}{endl}\PYG{p}{;}
+\PYG{+w}{    }\PYG{n}{iterator}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{getMatrix}\PYG{p}{().}\PYG{n}{fprint}\PYG{p}{(}\PYG{n}{os}\PYG{p}{);}
+\PYG{+w}{    }\PYG{n}{iterator}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{iterator}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{getNext}\PYG{p}{();}
+\PYG{+w}{  }\PYG{p}{\PYGZcb{}}\PYG{+w}{ }\PYG{k}{while}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{iterator}\PYG{+w}{ }\PYG{o}{!=}\PYG{+w}{ }\PYG{n}{\PYGZus{}head}\PYG{p}{);}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{k+kt}{void}\PYG{+w}{ }\PYG{n}{CircularQueueOfMatrix}\PYG{o}{::}\PYG{n}{print}\PYG{p}{()}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{  }\PYG{n}{fprint}\PYG{p}{(}\PYG{n}{std}\PYG{o}{::}\PYG{n}{cout}\PYG{p}{);}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

@@ -1,0 +1,5 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{SortedStringArray}\PYG{o}{::}\PYG{n}{size\PYGZus{}type}\PYG{+w}{ }\PYG{n+nf}{SortedStringArray::size}\PYG{p}{()}\PYG{+w}{ }\PYG{k}{const}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{  }\PYG{k}{return}\PYG{+w}{ }\PYG{n}{size\PYGZus{}}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

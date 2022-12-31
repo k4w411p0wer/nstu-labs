@@ -266,6 +266,7 @@ File &operator>>(File &file, Matrix &matrix) {
     MATRIX_DATATYPE el;
 
     fs.read((char *)&size, sizeof(size_t));
+    std::cout << size << std::endl;
     matrix = Matrix::zeros(size);
 
     for (size_t i = 0; i < size * size; ++i) {

@@ -1,0 +1,43 @@
+\selectlanguage *{russian}
+\selectlanguage *[babelshorthands=true]{russian}
+\contentsline {section}{\nameref {sec:intro}}{3}{section*.2}%
+\contentsline {section}{\numberline {1}Структура}{4}{section.0.1}%
+\contentsline {subsection}{\numberline {1.1}Структура класса}{4}{subsection.0.1.1}%
+\contentsline {subsection}{\numberline {1.2}Структура итератора}{4}{subsection.0.1.2}%
+\contentsline {section}{\numberline {2}Функционал}{5}{section.0.2}%
+\contentsline {subsection}{\numberline {2.1}Конструкторы}{5}{subsection.0.2.1}%
+\contentsline {subsection}{\numberline {2.2}Деструктор}{6}{subsection.0.2.2}%
+\contentsline {subsection}{\numberline {2.3}Открытие файла}{6}{subsection.0.2.3}%
+\contentsline {subsection}{\numberline {2.4}Закрытие файла}{7}{subsection.0.2.4}%
+\contentsline {subsection}{\numberline {2.5}Получение размера массива}{7}{subsection.0.2.5}%
+\contentsline {subsection}{\numberline {2.6}Бинарный поиск}{7}{subsection.0.2.6}%
+\contentsline {subsection}{\numberline {2.7}Поиск}{8}{subsection.0.2.7}%
+\contentsline {subsection}{\numberline {2.8}Добавление записи}{8}{subsection.0.2.8}%
+\contentsline {subsection}{\numberline {2.9}Получение записи по индексу}{9}{subsection.0.2.9}%
+\contentsline {subsection}{\numberline {2.10}Удаление записи}{10}{subsection.0.2.10}%
+\contentsline {subsection}{\numberline {2.11}Дефрагментация}{10}{subsection.0.2.11}%
+\contentsline {subsection}{\numberline {2.12}Исключения}{11}{subsection.0.2.12}%
+\contentsline {subsection}{\numberline {2.13}Итератор}{12}{subsection.0.2.13}%
+\contentsline {subsubsection}{\numberline {2.13.1}Конструктор}{12}{subsubsection.0.2.13.1}%
+\contentsline {subsubsection}{\numberline {2.13.2}Деструктор}{12}{subsubsection.0.2.13.2}%
+\contentsline {subsubsection}{\numberline {2.13.3}Copy-assigment}{12}{subsubsection.0.2.13.3}%
+\contentsline {subsubsection}{\numberline {2.13.4}Операторы сравнения}{13}{subsubsection.0.2.13.4}%
+\contentsline {subsubsection}{\numberline {2.13.5}Инкремент и декремент}{13}{subsubsection.0.2.13.5}%
+\contentsline {subsubsection}{\numberline {2.13.6}Основные арифметические операции}{14}{subsubsection.0.2.13.6}%
+\contentsline {subsubsection}{\numberline {2.13.7}Получение значения итератора}{14}{subsubsection.0.2.13.7}%
+\contentsline {section}{\numberline {3}Описание пользовательского интерфейса}{15}{section.0.3}%
+\contentsline {subsection}{\numberline {3.1}quit}{15}{subsection.0.3.1}%
+\contentsline {subsection}{\numberline {3.2}open [filename]}{16}{subsection.0.3.2}%
+\contentsline {subsection}{\numberline {3.3}close}{16}{subsection.0.3.3}%
+\contentsline {subsection}{\numberline {3.4}save}{17}{subsection.0.3.4}%
+\contentsline {subsection}{\numberline {3.5}defrag}{17}{subsection.0.3.5}%
+\contentsline {subsection}{\numberline {3.6}show}{18}{subsection.0.3.6}%
+\contentsline {subsection}{\numberline {3.7}find [string]}{18}{subsection.0.3.7}%
+\contentsline {subsection}{\numberline {3.8}add [string]}{19}{subsection.0.3.8}%
+\contentsline {subsection}{\numberline {3.9}remove [index]}{19}{subsection.0.3.9}%
+\contentsline {subsection}{\numberline {3.10}at [index]}{20}{subsection.0.3.10}%
+\contentsline {subsection}{\numberline {3.11}help}{20}{subsection.0.3.11}%
+\contentsline {section}{\numberline {4}Скорость работы структуры данных}{22}{section.0.4}%
+\contentsline {section}{\nameref {sec:end}}{25}{section*.15}%
+\contentsline {section}{\nameref {sec:application}}{26}{section*.16}%
+\contentsline {section}{\nameref {sec:application1}}{26}{section*.17}%

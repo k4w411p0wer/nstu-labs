@@ -1,0 +1,115 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+cp}{\PYGZsh{}include}\PYG{+w}{ }\PYG{c+cpf}{\PYGZlt{}algorithm\PYGZgt{}}
+\PYG{c+cp}{\PYGZsh{}include}\PYG{+w}{ }\PYG{c+cpf}{\PYGZlt{}chrono\PYGZgt{}}
+\PYG{c+cp}{\PYGZsh{}include}\PYG{+w}{ }\PYG{c+cpf}{\PYGZlt{}cmath\PYGZgt{}}
+\PYG{c+cp}{\PYGZsh{}include}\PYG{+w}{ }\PYG{c+cpf}{\PYGZlt{}cstdint\PYGZgt{}}
+\PYG{c+cp}{\PYGZsh{}include}\PYG{+w}{ }\PYG{c+cpf}{\PYGZlt{}iostream\PYGZgt{}}
+\PYG{c+cp}{\PYGZsh{}include}\PYG{+w}{ }\PYG{c+cpf}{\PYGZlt{}iterator\PYGZgt{}}
+\PYG{c+cp}{\PYGZsh{}include}\PYG{+w}{ }\PYG{c+cpf}{\PYGZlt{}numeric\PYGZgt{}}
+\PYG{c+cp}{\PYGZsh{}include}\PYG{+w}{ }\PYG{c+cpf}{\PYGZlt{}set\PYGZgt{}}
+\PYG{c+cp}{\PYGZsh{}include}\PYG{+w}{ }\PYG{c+cpf}{\PYGZlt{}stack\PYGZgt{}}
+\PYG{c+cp}{\PYGZsh{}include}\PYG{+w}{ }\PYG{c+cpf}{\PYGZlt{}string\PYGZgt{}}
+\PYG{c+cp}{\PYGZsh{}include}\PYG{+w}{ }\PYG{c+cpf}{\PYGZlt{}vector\PYGZgt{}}
+
+\PYG{c+cp}{\PYGZsh{}define MEM\PYGZus{}DEFAULT 1}
+\PYG{c+cp}{\PYGZsh{}define REPS\PYGZus{}DEFAULT 1}
+
+\PYG{c+cp}{\PYGZsh{}define BENCH(NAME, TYPE, ARG, TO\PYGZus{}TEST)                                        \PYGZbs{}}
+\PYG{c+cp}{  void bench\PYGZus{}\PYGZsh{}\PYGZsh{}NAME(TYPE ARG, int reps, int N) \PYGZob{}                               \PYGZbs{}}
+\PYG{c+cp}{    std::cout \PYGZlt{}\PYGZlt{} \PYGZdq{}Test: \PYGZdq{} \PYGZlt{}\PYGZlt{} \PYGZsh{}NAME \PYGZlt{}\PYGZlt{} std::endl                                \PYGZbs{}}
+\PYG{c+cp}{              \PYGZlt{}\PYGZlt{} \PYGZdq{}repeat: \PYGZdq{} \PYGZlt{}\PYGZlt{} reps \PYGZlt{}\PYGZlt{} std::endl                               \PYGZbs{}}
+\PYG{c+cp}{              \PYGZlt{}\PYGZlt{} \PYGZdq{}size: \PYGZdq{} \PYGZlt{}\PYGZlt{} N \PYGZlt{}\PYGZlt{} std::endl;                                   \PYGZbs{}}
+\PYG{c+cp}{    std::vector\PYGZlt{}double\PYGZgt{} results(reps);                                         \PYGZbs{}}
+\PYG{c+cp}{    TYPE ARG\PYGZsh{}\PYGZsh{}\PYGZus{}copy = ARG;                                                     \PYGZbs{}}
+\PYG{c+cp}{    for (int i = 0; i \PYGZlt{} reps; ++i) \PYGZob{}                                           \PYGZbs{}}
+\PYG{c+cp}{      ARG = ARG\PYGZsh{}\PYGZsh{}\PYGZus{}copy;                                                        \PYGZbs{}}
+\PYG{c+cp}{      auto start = std::chrono::high\PYGZus{}resolution\PYGZus{}clock::now();                  \PYGZbs{}}
+\PYG{c+cp}{      asm volatile(\PYGZdq{}\PYGZdq{} ::\PYGZdq{}g\PYGZdq{}(start));                                           \PYGZbs{}}
+\PYG{c+cp}{      for (int j = 0; j \PYGZlt{} N; ++j) \PYGZob{}                                            \PYGZbs{}}
+\PYG{c+cp}{        TO\PYGZus{}TEST;                                                               \PYGZbs{}}
+\PYG{c+cp}{      \PYGZcb{}                                                                        \PYGZbs{}}
+\PYG{c+cp}{      auto end = std::chrono::high\PYGZus{}resolution\PYGZus{}clock::now();                    \PYGZbs{}}
+\PYG{c+cp}{      asm volatile(\PYGZdq{}\PYGZdq{} ::\PYGZdq{}g\PYGZdq{}(end));                                             \PYGZbs{}}
+\PYG{c+cp}{      results[i] =                                                             \PYGZbs{}}
+\PYG{c+cp}{          std::chrono::duration\PYGZlt{}double\PYGZgt{}(end \PYGZhy{} start).count() * 1000.0;         \PYGZbs{}}
+\PYG{c+cp}{    \PYGZcb{}                                                                          \PYGZbs{}}
+\PYG{c+cp}{    const auto average =                                                       \PYGZbs{}}
+\PYG{c+cp}{        std::accumulate(results.begin(), results.end(), 0.0) / results.size(); \PYGZbs{}}
+\PYG{c+cp}{    const auto sigma =                                                         \PYGZbs{}}
+\PYG{c+cp}{        std::sqrt(std::accumulate(results.begin(), results.end(), 0.0,         \PYGZbs{}}
+\PYG{c+cp}{                                  [\PYGZam{}](const auto \PYGZam{}i, const auto \PYGZam{}j) \PYGZob{}          \PYGZbs{}}
+\PYG{c+cp}{                                    return i + std::pow(j \PYGZhy{} average, 2);       \PYGZbs{}}
+\PYG{c+cp}{                                  \PYGZcb{}) /                                         \PYGZbs{}}
+\PYG{c+cp}{                  results.size());                                             \PYGZbs{}}
+\PYG{c+cp}{    std::cout \PYGZlt{}\PYGZlt{} \PYGZdq{}Time(average \PYGZbs{}u2213 \PYGZbs{}u03c3): \PYGZdq{} \PYGZlt{}\PYGZlt{} average \PYGZlt{}\PYGZlt{} \PYGZdq{} \PYGZbs{}u2213 \PYGZdq{}      \PYGZbs{}}
+\PYG{c+cp}{              \PYGZlt{}\PYGZlt{} sigma \PYGZlt{}\PYGZlt{} \PYGZdq{} ms\PYGZdq{} \PYGZlt{}\PYGZlt{} std::endl                                   \PYGZbs{}}
+\PYG{c+cp}{              \PYGZlt{}\PYGZlt{} \PYGZdq{}Range(min \PYGZbs{}u2026 max):  \PYGZdq{}                                    \PYGZbs{}}
+\PYG{c+cp}{              \PYGZlt{}\PYGZlt{} *std::min\PYGZus{}element(results.begin(), results.end())             \PYGZbs{}}
+\PYG{c+cp}{              \PYGZlt{}\PYGZlt{} \PYGZdq{} \PYGZbs{}u2026 \PYGZdq{}                                                    \PYGZbs{}}
+\PYG{c+cp}{              \PYGZlt{}\PYGZlt{} *std::max\PYGZus{}element(results.begin(), results.end()) \PYGZlt{}\PYGZlt{} \PYGZdq{} ms\PYGZdq{}    \PYGZbs{}}
+\PYG{c+cp}{              \PYGZlt{}\PYGZlt{} std::endl;                                                    \PYGZbs{}}
+\PYG{c+cp}{  \PYGZcb{}}
+
+\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n+nf}{maybe\PYGZus{}readopt}\PYG{p}{(}\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{argc}\PYG{p}{,}\PYG{+w}{ }\PYG{k+kt}{char}\PYG{+w}{ }\PYG{o}{*}\PYG{n}{argv}\PYG{p}{[],}\PYG{+w}{ }\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{n}\PYG{p}{,}\PYG{+w}{ }\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{def}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{  }\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{argc}\PYG{+w}{ }\PYG{o}{\PYGZgt{}}\PYG{+w}{ }\PYG{n}{n}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{    }\PYG{k+kt}{char}\PYG{+w}{ }\PYG{o}{*}\PYG{n}{flag}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k}{nullptr}\PYG{p}{;}
+\PYG{+w}{    }\PYG{k}{return}\PYG{+w}{ }\PYG{n}{std}\PYG{o}{::}\PYG{n}{strtoll}\PYG{p}{(}\PYG{n}{argv}\PYG{p}{[}\PYG{n}{n}\PYG{p}{],}\PYG{+w}{ }\PYG{o}{\PYGZam{}}\PYG{n}{flag}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m+mi}{0}\PYG{p}{);}
+\PYG{+w}{  }\PYG{p}{\PYGZcb{}}
+\PYG{+w}{  }\PYG{k}{return}\PYG{+w}{ }\PYG{n}{def}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{n}{BENCH}\PYG{p}{(}\PYG{n}{stack\PYGZus{}push}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{std}\PYG{o}{::}\PYG{n}{stack}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{int}\PYG{o}{\PYGZgt{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{stack}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{stack}\PYG{p}{.}\PYG{n}{push}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{))}
+\PYG{n}{BENCH}\PYG{p}{(}\PYG{n}{stack\PYGZus{}pop}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{std}\PYG{o}{::}\PYG{n}{stack}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{int}\PYG{o}{\PYGZgt{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{stack}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{stack}\PYG{p}{.}\PYG{n}{pop}\PYG{p}{())}
+\PYG{n}{BENCH}\PYG{p}{(}\PYG{n}{multiset\PYGZus{}insert}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{std}\PYG{o}{::}\PYG{n}{multiset}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{int}\PYG{o}{\PYGZgt{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{multiset}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{multiset}\PYG{p}{.}\PYG{n}{insert}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{))}
+\PYG{n}{BENCH}\PYG{p}{(}\PYG{n}{multiset\PYGZus{}erase}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{std}\PYG{o}{::}\PYG{n}{multiset}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{int}\PYG{o}{\PYGZgt{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{multiset}\PYG{p}{,}
+\PYG{+w}{      }\PYG{n}{multiset}\PYG{p}{.}\PYG{n}{erase}\PYG{p}{(}\PYG{n}{std}\PYG{o}{::}\PYG{n}{prev}\PYG{p}{(}\PYG{n}{multiset}\PYG{p}{.}\PYG{n}{end}\PYG{p}{())))}
+\PYG{n}{BENCH}\PYG{p}{(}\PYG{n}{multiset\PYGZus{}find}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{std}\PYG{o}{::}\PYG{n}{multiset}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{int}\PYG{o}{\PYGZgt{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{multiset}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{multiset}\PYG{p}{.}\PYG{n}{find}\PYG{p}{(}\PYG{n}{std}\PYG{o}{::}\PYG{n}{rand}\PYG{p}{()))}
+
+\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{main}\PYG{p}{(}\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{argc}\PYG{p}{,}\PYG{+w}{ }\PYG{k+kt}{char}\PYG{+w}{ }\PYG{o}{*}\PYG{n}{argv}\PYG{p}{[])}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{  }\PYG{n}{std}\PYG{o}{::}\PYG{n}{srand}\PYG{p}{(}\PYG{n}{std}\PYG{o}{::}\PYG{n}{time}\PYG{p}{(}\PYG{k}{nullptr}\PYG{p}{));}
+
+\PYG{+w}{  }\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{size}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{maybe\PYGZus{}readopt}\PYG{p}{(}\PYG{n}{argc}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{argv}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{MEM\PYGZus{}DEFAULT}\PYG{p}{);}
+\PYG{+w}{  }\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{reps}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{maybe\PYGZus{}readopt}\PYG{p}{(}\PYG{n}{argc}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{argv}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m+mi}{2}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{REPS\PYGZus{}DEFAULT}\PYG{p}{);}
+
+\PYG{+w}{  }\PYG{c+cm}{/* Для встроенного типа (например, int или char) провести временной анализ}
+\PYG{c+cm}{   * заданных шаблонных классов на основных операциях: добавление, удаление,}
+\PYG{c+cm}{   * поиск, сортировка. Использовать итераторы для работы с контейнерами.}
+\PYG{c+cm}{   * Для получения времени выполнения операции засекать системное время}
+\PYG{c+cm}{   * начала и окончания операции и автоматически генерировать большое}
+\PYG{c+cm}{   * количество данных}
+\PYG{c+cm}{   */}
+\PYG{+w}{  }\PYG{p}{\PYGZob{}}
+\PYG{+w}{    }\PYG{n}{std}\PYG{o}{::}\PYG{n}{stack}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{int}\PYG{o}{\PYGZgt{}}\PYG{+w}{ }\PYG{n}{stack}\PYG{p}{;}
+\PYG{+w}{    }\PYG{n}{bench\PYGZus{}stack\PYGZus{}push}\PYG{p}{(}\PYG{n}{stack}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{reps}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{size}\PYG{p}{);}
+\PYG{+w}{  }\PYG{p}{\PYGZcb{}}
+\PYG{+w}{  }\PYG{p}{\PYGZob{}}
+\PYG{+w}{    }\PYG{n}{std}\PYG{o}{::}\PYG{n}{stack}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{int}\PYG{o}{\PYGZgt{}}\PYG{+w}{ }\PYG{n}{stack}\PYG{p}{;}
+\PYG{+w}{    }\PYG{k}{for}\PYG{+w}{ }\PYG{p}{(}\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{i}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mi}{0}\PYG{p}{;}\PYG{+w}{ }\PYG{n}{i}\PYG{+w}{ }\PYG{o}{\PYGZlt{}}\PYG{+w}{ }\PYG{n}{size}\PYG{p}{;}\PYG{+w}{ }\PYG{o}{++}\PYG{n}{i}\PYG{p}{)}
+\PYG{+w}{      }\PYG{n}{stack}\PYG{p}{.}\PYG{n}{push}\PYG{p}{(}\PYG{n}{std}\PYG{o}{::}\PYG{n}{rand}\PYG{p}{());}
+\PYG{+w}{    }\PYG{n}{bench\PYGZus{}stack\PYGZus{}pop}\PYG{p}{(}\PYG{n}{stack}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{reps}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{size}\PYG{p}{);}
+\PYG{+w}{  }\PYG{p}{\PYGZcb{}}
+\PYG{+w}{  }\PYG{p}{\PYGZob{}}
+\PYG{+w}{    }\PYG{n}{std}\PYG{o}{::}\PYG{n}{multiset}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{int}\PYG{o}{\PYGZgt{}}\PYG{+w}{ }\PYG{n}{multiset}\PYG{p}{;}
+\PYG{+w}{    }\PYG{n}{bench\PYGZus{}multiset\PYGZus{}insert}\PYG{p}{(}\PYG{n}{multiset}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{reps}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{size}\PYG{p}{);}
+\PYG{+w}{  }\PYG{p}{\PYGZcb{}}
+\PYG{+w}{  }\PYG{p}{\PYGZob{}}
+\PYG{+w}{    }\PYG{n}{std}\PYG{o}{::}\PYG{n}{multiset}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{int}\PYG{o}{\PYGZgt{}}\PYG{+w}{ }\PYG{n}{multiset}\PYG{p}{;}
+\PYG{+w}{    }\PYG{k}{for}\PYG{+w}{ }\PYG{p}{(}\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{i}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mi}{0}\PYG{p}{;}\PYG{+w}{ }\PYG{n}{i}\PYG{+w}{ }\PYG{o}{\PYGZlt{}}\PYG{+w}{ }\PYG{n}{size}\PYG{p}{;}\PYG{+w}{ }\PYG{o}{++}\PYG{n}{i}\PYG{p}{)}
+\PYG{+w}{      }\PYG{n}{multiset}\PYG{p}{.}\PYG{n}{insert}\PYG{p}{(}\PYG{n}{std}\PYG{o}{::}\PYG{n}{rand}\PYG{p}{());}
+\PYG{+w}{    }\PYG{n}{bench\PYGZus{}multiset\PYGZus{}erase}\PYG{p}{(}\PYG{n}{multiset}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{reps}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{size}\PYG{p}{);}
+\PYG{+w}{  }\PYG{p}{\PYGZcb{}}
+\PYG{+w}{  }\PYG{p}{\PYGZob{}}
+\PYG{+w}{    }\PYG{n}{std}\PYG{o}{::}\PYG{n}{multiset}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{int}\PYG{o}{\PYGZgt{}}\PYG{+w}{ }\PYG{n}{multiset}\PYG{p}{;}
+\PYG{+w}{    }\PYG{k}{for}\PYG{+w}{ }\PYG{p}{(}\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{i}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mi}{0}\PYG{p}{;}\PYG{+w}{ }\PYG{n}{i}\PYG{+w}{ }\PYG{o}{\PYGZlt{}}\PYG{+w}{ }\PYG{n}{size}\PYG{p}{;}\PYG{+w}{ }\PYG{o}{++}\PYG{n}{i}\PYG{p}{)}
+\PYG{+w}{      }\PYG{n}{multiset}\PYG{p}{.}\PYG{n}{insert}\PYG{p}{(}\PYG{n}{std}\PYG{o}{::}\PYG{n}{rand}\PYG{p}{());}
+\PYG{+w}{    }\PYG{n}{bench\PYGZus{}multiset\PYGZus{}find}\PYG{p}{(}\PYG{n}{multiset}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{reps}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{size}\PYG{p}{);}
+\PYG{+w}{  }\PYG{p}{\PYGZcb{}}
+\PYG{+w}{  }\PYG{c+c1}{// \PYGZob{}}
+\PYG{+w}{  }\PYG{c+c1}{//   std::multiset\PYGZlt{}int\PYGZgt{} multiset;}
+\PYG{+w}{  }\PYG{c+c1}{//   for (int i = 0; i \PYGZlt{} 10; ++i)}
+\PYG{+w}{  }\PYG{c+c1}{//     multiset.insert(std::rand());}
+\PYG{+w}{  }\PYG{c+c1}{//   for (const auto \PYGZam{}i : multiset)}
+\PYG{+w}{  }\PYG{c+c1}{//     std::cout \PYGZlt{}\PYGZlt{} i \PYGZlt{}\PYGZlt{} std::endl;}
+\PYG{+w}{  }\PYG{c+c1}{// \PYGZcb{}}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

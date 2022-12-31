@@ -60,7 +60,7 @@ int main() {
   (c - d).print();
 
   std::cout << "Test 13: to size_t" << std::endl;
-  std::cout << size_t(Matrix(5)) << std::endl;
+  std::cout << size_t(matrix) << std::endl;
 
   File otf("./assets/out.txt", std::ios_base::out);
   otf << matrix;

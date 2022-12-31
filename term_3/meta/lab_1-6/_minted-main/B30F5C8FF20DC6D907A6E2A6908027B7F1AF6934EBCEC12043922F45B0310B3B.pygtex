@@ -1,0 +1,9 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{ConstIterator}\PYG{+w}{ }\PYG{n+nf}{SortedStringArray::begin}\PYG{p}{()}\PYG{+w}{ }\PYG{k}{const}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{  }\PYG{k}{return}\PYG{+w}{ }\PYG{n}{ConstIterator}\PYG{p}{(}\PYG{k}{const\PYGZus{}cast}\PYG{o}{\PYGZlt{}}\PYG{n}{SortedStringArray}\PYG{+w}{ }\PYG{o}{*\PYGZgt{}}\PYG{p}{(}\PYG{k}{this}\PYG{p}{),}\PYG{+w}{ }\PYG{l+m+mi}{0}\PYG{p}{);}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{n}{ConstIterator}\PYG{+w}{ }\PYG{n+nf}{SortedStringArray::end}\PYG{p}{()}\PYG{+w}{ }\PYG{k}{const}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{  }\PYG{k}{return}\PYG{+w}{ }\PYG{n}{ConstIterator}\PYG{p}{(}\PYG{k}{const\PYGZus{}cast}\PYG{o}{\PYGZlt{}}\PYG{n}{SortedStringArray}\PYG{+w}{ }\PYG{o}{*\PYGZgt{}}\PYG{p}{(}\PYG{k}{this}\PYG{p}{),}\PYG{+w}{ }\PYG{n}{size\PYGZus{}}\PYG{p}{);}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

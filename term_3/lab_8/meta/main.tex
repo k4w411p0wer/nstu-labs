@@ -1,0 +1,593 @@
+\documentclass[a4paper,14pt,oneside,final]{extreport}
+
+\usepackage[framemethod=default]{mdframed}
+\usepackage{moreverb}
+
+\usepackage{lastpage}
+% Предоставляет проприетарный Times New Roman.
+\usepackage{pscyr}
+
+        % \usepackage[scaled=0.914]{XCharter}[2017/12/19] % Подключение русифицированных шрифтов XCharter
+
+% Выбор шрифта по-умолчанию.
+% Пункт 2.1.1 Требований по оформлению пояснительной записки.
+% Примечание: В требованиях не указан, какой именно шрифт использовать. По традиции используем TNR.
+\renewcommand{\rmdefault}{ftm}
+% \renewcommand{\familydefault}{Times New Roman}
+% Установка кодировки исходных файлов.
+\usepackage[utf8]{inputenc}
+% Учет особенностей различных языков.
+\usepackage[russian, english]{babel}
+% Выбор внутренней TeX кодировки.
+% \usepackage[T1,T2A]{fontenc}
+\usepackage{polyglossia,fontspec}
+% \usepackage{xunicode}
+
+\setmainlanguage[babelshorthands=true]{russian}
+\setotherlanguage{english}
+
+\setmonofont{Courier New}
+\newfontfamily\cyrillicfonttt{Courier New}
+\defaultfontfeatures{Ligatures=TeX}
+
+\setmainfont{Times New Roman}
+\newfontfamily\cyrillicfont{Times New Roman}
+\setsansfont{Arial}
+\newfontfamily\cyrillicfontsf{Arial}
+
+% Если планируете использовать Times New Romans (ftm), то нужно будет установить пакет PSCyr.
+% PSCyr на Linux: http://plumbum-blog.blogspot.ru/2010/11/pscyr-tex-live.html?showComment=1290219013107#c2607271373129816963 (придется вспомнить команды копирования в терминале). На Windows инструкцию найти достаточно легко, как и исполнить её.
+
+% \setmainfont{Times New Roman}
+% Делает результирующий PDF "searchable and copyable".
+\usepackage{cmap}
+% Чтобы можно было использовать русские буквы в формулах, но в случае использования предупреждать об этом.
+\usepackage[warn]{mathtext}
+% Зачем: Добавляет поддержу дополнительных размеров текста 8pt, 9pt, 10pt, 11pt, 12pt, 14pt, 17pt, and 20pt.
+% Почему: Пункт 2.1.1 Требований по оформлению пояснительной записки.
+\usepackage{extsizes}
+% Зачем: Длинна, пимерно соответвующая 5 символам
+% Почему: Требования содержат странное требование про отсупы в 5 символов (для немоноширинного шрифта :| )
+\newlength{\fivecharsapprox}
+\setlength{\fivecharsapprox}{5ex}
+% Зачем: Добавляет отступы для абзацев.
+% Почему: Пункт 2.1.3 Требований по оформлению пояснительной записки.
+\usepackage{indentfirst}
+\setlength{\parindent}{\fivecharsapprox} % Примерно соответсвует 5 символам.
+% Зачем: Настраивает межстрочный интервал, для размещения 40 +/- 3 строки текста на странице.
+% Почему: Пункт 2.1.1 Требований по оформлению пояснительной записки.
+\usepackage[nodisplayskipstretch]{setspace}
+\setstretch{1.1}
+% Зачем: Отключает использование изменяемых межсловных пробелов.
+% Почему: Так не принято делать в текстах на русском языке.
+\frenchspacing
+% Сброс счетчика сносок для каждой страницы
+% Примечание: в "Требованиях по оформлению пояснительной записки" не указано, как нужно делать, но в других БГУИРовских докуметах рекомендуется нумерация отдельная для каждой страницы
+\usepackage{perpage}
+\MakePerPage{footnote}
+% Добавляет скобку 1) к номеру сноски
+% Пункты 2.9.2 и 2.9.1 Требований по оформлению пояснительной записки.
+\makeatletter \def\@makefnmark{\hbox{\@textsuperscript{\normalfont\@thefnmark)}}} \makeatother
+% Зачем: Расположение сносок внизу страницы
+% Почему: Пункт 2.9.2 Требований по оформлению пояснительной записки.
+\usepackage[bottom]{footmisc}
+% Переопределяем стандартную нумерацию, т.к. в отчете будут только section и т.д. в терминологии TeX
+\makeatletter \renewcommand{\thesection}{\arabic{section}} \makeatother
+% Зачем: Пункты (в терминологии требований) в терминологии TeX subsubsection должны нумероваться
+% Почему: Пункт 2.2.3 Требований по оформлению пояснительной записки.
+\setcounter{secnumdepth}{3}
+% Зачем: Настраивает отступ между таблицей с содержанимем и словом СОДЕРЖАНИЕ
+% Почему: Пункт 2.2.7 Требований по оформлению пояснительной записки.
+\usepackage{tocloft}
+\setlength{\cftbeforetoctitleskip}{-1em}
+\setlength{\cftaftertoctitleskip}{1em}
+% Определяет отступы слева для записей в таблице содержания.
+% Пункт 2.2.7 Требований по оформлению пояснительной записки.
+\makeatletter
+	\renewcommand{\l@section}{\@dottedtocline{1}{0.5em}{1.2em}}
+	\renewcommand{\l@subsection}{\@dottedtocline{2}{1.7em}{2.0em}}
+\makeatother
+% Задает стиль заголовков раздела жирным шрифтом, прописными буквами, без точки в конце
+% Пункты 2.1.1, 2.2.5, 2.2.6 и ПРИЛОЖЕНИЕ Л Требований по оформлению пояснительной записки.
+\makeatletter
+\renewcommand\section{%
+  \clearpage\@startsection {section}{1}%
+    {\fivecharsapprox}%
+    {-1em \@plus -1ex \@minus -.2ex}%
+    {1em \@plus .2ex}%
+    {\hyphenpenalty=10000\normalfont\normalsize\bfseries\MakeUppercase}}
+\makeatother
+
+
+% Зачем: Задает стиль заголовков подразделов
+% Почему: Пункты 2.1.1, 2.2.5 и ПРИЛОЖЕНИЕ Л Требований по оформлению пояснительной записки.
+\makeatletter
+\renewcommand\subsection{%
+  \@startsection{subsection}{2}%
+    {\fivecharsapprox}%
+    {-1em \@plus -1ex \@minus -.2ex}%
+    {1em \@plus .2ex}%
+    {\raggedright\hyphenpenalty=10000\normalfont\normalsize\bfseries}}
+\makeatother
+% Зачем: Задает стиль заголовков пунктов
+% Почему: Пункты 2.1.1, 2.2.5 и ПРИЛОЖЕНИЕ Л Требований по оформлению пояснительной записки.
+\makeatletter
+\renewcommand\subsubsection{
+  \@startsection{subsubsection}{3}%
+    {\fivecharsapprox}%
+    {-1em \@plus -1ex \@minus -.2ex}%
+    {1em \@plus .2ex}%
+    {\raggedright\hyphenpenalty=10000\normalfont\normalsize\bfseries}}
+\makeatother
+% Зачем: для оформления введения и заключения, они должны быть выровнены по центру.
+% Почему: Пункты 1.1.15 и 1.1.11 Требований по оформлению пояснительной записки.
+\makeatletter
+\newcommand\sectioncentered{%
+  \clearpage\@startsection {section}{1}%
+    {\z@}%
+    {-1em \@plus -1ex \@minus -.2ex}%
+    {1em \@plus .2ex}%
+    {\centering\hyphenpenalty=10000\normalfont\normalsize\bfseries\MakeUppercase}%
+    }
+\makeatother
+% Зачем: Задает стиль библиографии
+% Почему: Пункт 2.8.6 Требований по оформлению пояснительной записки.
+\bibliographystyle{ugost2008}
+% Зачем: Пакет для вставки картинок
+% Примечание: Объяснение, зачем final - http://tex.stackexchange.com/questions/11004/why-does-the-image-not-appear
+\usepackage{graphicx}
+% \DeclareGraphicsExtensions{.pdf,.png,.jpg,.eps}
+% Зачем: Директория в которой будет происходить поиск картинок
+\graphicspath{{.}}
+% Зачем: Добавление подписей к рисункам
+\usepackage[nooneline]{caption}
+\usepackage{subcaption}
+% Зачем: чтобы работала \No в новых латехах
+\DeclareRobustCommand{\No}{\ifmmode{\nfss@text{\textnumero}}\else\textnumero\fi}
+% Зачем: поворот ячеек таблиц на 90 градусов
+\usepackage{rotating}
+\DeclareRobustCommand{\povernut}[1]{\begin{sideways}{#1}\end{sideways}}
+% Зачем: Задание подписей, разделителя и нумерации частей рисунков
+% Почему: Пункт 2.5.5 Требований по оформлению пояснительной записки.
+\DeclareCaptionLabelFormat{stbfigure}{Рисунок #2}
+\DeclareCaptionLabelFormat{stbtable}{Таблица #2}
+\DeclareCaptionLabelFormat{stblisting}{Листинг #2}
+\DeclareCaptionLabelSeparator{stb}{~--~}
+\captionsetup{labelsep=stb}
+\captionsetup[figure]{labelformat=stbfigure,justification=centering}
+\captionsetup[table]{labelformat=stbtable,justification=raggedright}
+\captionsetup[listing]{labelformat=stblisting,justification=centering}
+
+\newenvironment{longlisting}{\captionsetup{type=listing}}{}
+% \captionsetup[listing]{labelformat=stblisting,justification=centering}
+\renewcommand{\thesubfigure}{\asbuk{subfigure}}
+
+% Зачем: Окружения для оформления формул
+% Почему: Пункт 2.4.7 требований по оформлению пояснительной записки и специфические требования различных кафедр
+% Пример использования смотри в course_content.tex, строка 5
+\usepackage{calc}
+\newlength{\lengthWordWhere}
+\settowidth{\lengthWordWhere}{где}
+\newenvironment{explanationx}
+    {%
+    %%% Следующие строки определяют специфические требования разных редакций стандартов. Раскоменнтируйте нужную строку
+    %% стандартный абзац, СТП-01 2010
+    %\begin{itemize}[leftmargin=0cm, itemindent=\parindent + \lengthWordWhere + \labelsep, labelsep=\labelsep]
+    %% без отступа, СТП-01 2013
+    \begin{itemize}[leftmargin=0cm, itemindent=\lengthWordWhere + \labelsep , labelsep=\labelsep]%
+    \renewcommand\labelitemi{}%
+    }
+    {%
+    %\\[\parsep]
+    \end{itemize}
+    }
+
+% Старое окружение для "где". Сохранено для совместимости
+\usepackage{tabularx}
+\newenvironment{explanation}
+    {
+    %%% Следующие строки определяют специфические требования разных редакций стандартов. Раскоменнтируйте нужные 2 строки
+    %% стандартный абзац, СТП-01 2010
+    \par
+    \tabularx{\textwidth-\fivecharsapprox}{@{}ll@{ --- } X }
+    %% без отступа, СТП-01 2013
+    %\noindent
+    %\tabularx{\textwidth}{@{}ll@{ --- } X }
+    }
+    {
+    \\[\parsep]
+    \endtabularx
+    }
+% Зачем: Удобная вёрстка многострочных формул, масштабирующийся текст в формулах, формулы в рамках и др
+\usepackage{amsmath}
+% Зачем: Поддержка ажурного и готического шрифтов
+\usepackage{amsfonts}
+% Зачем: amsfonts + несколько сотен дополнительных математических символов
+\usepackage{amssymb}
+% Зачем: Окружения «теорема», «лемма»
+\usepackage{amsthm}
+% Зачем: Производить арифметические операции во время компиляции TeX файла
+\usepackage{calc}
+% Зачем: Производить арифметические операции во время компиляции TeX файла
+\usepackage{fp}
+% Зачем: Пакет для работы с перечислениями
+ \usepackage{enumitem}
+ \makeatletter \AddEnumerateCounter{\asbuk}{\@asbuk}{щ)} \makeatother
+% Зачем: Устанавливает символ начала простого перечисления
+% Почему: Пункт 2.3.5 Требований по оформлению пояснительной записки.
+ \setlist{nolistsep}
+% Зачем: Устанавливает символ начала именованного перечисления
+% Почему: Пункт 2.3.8 Требований по оформлению пояснительной записки.
+\renewcommand{\labelenumi}{\asbuk{enumi})}
+\renewcommand{\labelenumii}{\arabic{enumii})}
+% Зачем: Устанавливает отступ от границы документа до символа списка, чтобы этот отступ равнялся отступу параграфа
+% Почему: Пункт 2.3.5 Требований по оформлению пояснительной записки.
+\setlist[itemize,0]{itemindent=\parindent + 2.2ex,leftmargin=0ex,label=--}
+\setlist[enumerate,1]{itemindent=\parindent + 2.7ex,leftmargin=0ex}
+\setlist[enumerate,2]{itemindent=\parindent + \parindent - 2.7ex}
+% Зачем: Дополнительные возможности в форматировании таблиц
+\usepackage{makecell}
+\usepackage{multirow}
+\usepackage{array}
+% Зачем: "Умная" запятая в математических формулах. В дробных числах не добавляет пробел
+% Почему: В требованиях не нашел, но в русском языке для дробных чисел используется {,} а не {.}
+\usepackage{icomma}
+% Зачем: макрос для печати римских чисел
+\makeatletter
+\newcommand{\rmnum}[1]{\romannumeral #1}
+\newcommand{\Rmnum}[1]{\expandafter\@slowromancap\romannumeral #1@}
+\makeatother
+% Зачем: Управление выводом чисел.
+\usepackage{sistyle}
+\SIdecimalsign{,}
+% Зачем: inline-коментирование содержимого.
+\newcommand{\ignore}[2]{\hspace{0in}#2}
+% Зачем: Возможность коментировать большие участки документа
+\usepackage{verbatim}
+\usepackage{xcolor}
+% Зачем: Оформление листингов кода
+% Примечание: final нужен для переопределения режима draft, в котором листинги не выводятся в документ.
+\usepackage[final]{listings}
+\usepackage[normalem]{ulem}
+
+\usepackage{url}
+\usepackage[final,hidelinks]{hyperref}
+% Моноширинный шрифт выглядит визуально больше, чем пропорциональный шрифт, если их размеры одинаковы. Искусственно уменьшаем размер ссылок.
+\renewcommand{\UrlFont}{\footnotesize\rmfamily\tt}
+
+\usepackage[square,numbers,sort&compress]{natbib}
+\setlength{\bibsep}{0em}
+
+% Магия для подсчета разнообразных объектов в документе
+\usepackage{lastpage}
+\usepackage{totcount}
+\regtotcounter{section}
+
+\usepackage{etoolbox}
+
+\newcounter{totfigures}
+\newcounter{tottables}
+\newcounter{totreferences}
+\newcounter{totequation}
+
+\providecommand\totfig{}
+\providecommand\tottab{}
+\providecommand\totref{}
+\providecommand\toteq{}
+
+\makeatletter
+\AtEndDocument{%
+  \addtocounter{totfigures}{\value{figure}}%
+  \addtocounter{tottables}{\value{table}}%
+  \addtocounter{totequation}{\value{equation}}
+  \immediate\write\@mainaux{%
+    \string\gdef\string\totfig{\number\value{totfigures}}%
+    \string\gdef\string\tottab{\number\value{tottables}}%
+    \string\gdef\string\totref{\number\value{totreferences}}%
+    \string\gdef\string\toteq{\number\value{totequation}}%
+  }%
+}
+\makeatother
+
+\pretocmd{\section}{\addtocounter{totfigures}{\value{figure}}\setcounter{figure}{0}}{}{}
+\pretocmd{\section}{\addtocounter{tottables}{\value{table}}\setcounter{table}{0}}{}{}
+\pretocmd{\section}{\addtocounter{totequation}{\value{equation}}\setcounter{equation}{0}}{}{}
+\pretocmd{\bibitem}{\addtocounter{totreferences}{1}}{}{}
+
+% Для оформления таблиц не влязящих на 1 страницу
+\usepackage{longtable}
+
+% Для включения pdf документов в результирующий файл
+\usepackage{pdfpages}
+% Для использования знака градуса и других знаков
+% http://ctan.org/pkg/gensymb
+\usepackage{gensymb}
+% Зачем: преобразовывать текст в верхний регистр командой MakeTextUppercase
+\usepackage{textcase}
+% Зачем: Переносы в словах с тире.
+% Тире в словае заменяем на \hyph: аппаратно\hyphпрограммный.
+% https://stackoverflow.com/questions/2193307/how-to-get-latex-to-hyphenate-a-word-that-contains-a-dash#
+\def\hyph{-\penalty0\hskip0pt\relax}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{lmodern}
+\usepackage{float}
+% поля
+\usepackage[a4paper,left=30mm,right=10mm,top=20mm,bottom=20mm,nohead,nofoot,nomarginpar]{geometry}
+% толерантность к переносам
+\tolerance 6000%
+% для списка источников
+\makeatletter \renewcommand{\@biblabel}[1]{\stepcounter{totreferences}#1 \hfill} \makeatother
+% для случая, когда документ маленький, и всего одна секция
+%\renewcommand{\thesection}{}
+%\renewcommand{\thesubsection}{\arabic{subsection}}
+%\renewcommand{\thesubsubsection}{\arabic{subsection}.\arabic{subsubsection}}
+% не помню зачем. Кажется, разреживает таблицу.
+\renewcommand{\arraystretch}{1.5}
+
+\renewcommand{\rmdefault}{cmr} % Шрифт с засечками
+\renewcommand{\sfdefault}{cmss} % Шрифт без засечек
+\renewcommand{\ttdefault}{cmtt} % Моноширинный шрифт
+\renewcommand{\labelitemi}{--}
+\renewcommand{\labelenumi}{\theenumi.}
+
+\usepackage{chngcntr}
+\counterwithin{equation}{section}
+
+\usepackage{indentfirst}
+\usepackage{cool}
+\usepackage{commath}
+
+\newcommand*\rfrac[2]{{}^{#1}\!/_{#2}}
+\DeclareMathAlphabet{\mathpzc}{OT1}{pzc}{m}{it}
+\newcommand{\z}{\mathpzc{z}}
+\usepackage{mathtools}
+
+\usepackage{hyperref}
+\hypersetup{colorlinks = true}
+% для правильной и быстрой записи дифференциалов и частных производных
+\usepackage{physics}
+\allowdisplaybreaks
+%\displaybreak[0]
+% http://tex.stackexchange.com/questions/42271/floor-and-ceiling-functions
+\usepackage{mathtools}
+\DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
+
+\usepackage{amsmath}
+\usepackage{tcolorbox}
+
+\usepackage{listings}
+
+\usepackage{color}
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+\definecolor{deepblue}{rgb}{0,0,0.5}
+\definecolor{deepred}{rgb}{0.6,0,0}
+\definecolor{deepgreen}{rgb}{0,0.5,0}
+
+% Default settings for code listings
+\lstset{frame=tb,
+  aboveskip=3mm,
+  belowskip=3mm,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle=\renewcommand{\baselinestretch}{0.95}\ttfamily,
+  numbers=none,
+  numberstyle=\tiny\color{gray},
+  keywordstyle=\bfseries\color{orange!40!black},
+  commentstyle=\itshape\color{purple!40!black},
+  identifierstyle=\color{black},
+  emph={Main,MyMath, Data, Solution,
+  		Int, Double, String, Array, Unit,
+  		Console, math},          % Custom highlighting
+  emphstyle = \color{deepgreen},    % Custom highlighting style
+  stringstyle=\color{mauve},
+  frame=L,
+  xleftmargin=\parindent,
+  breaklines=true,
+  breakatwhitespace=true
+  tabsize=3
+  framexleftmargin=8mm,
+  rulesepcolor=\color{blue},
+}
+
+\usepackage{minted}
+\usepackage{xcolor}
+\colorlet{LightGray}{black!5!}
+\setminted[cpp]{fontsize=\footnotesize,tabsize=2,breaklines=true,bgcolor=LightGray}
+
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+% We will externalize the figures
+% \usepgfplotslibrary{external}
+% \tikzexternalize
+
+\usepackage{cleveref}
+
+\begin{document}
+  \begin{titlepage}
+    \begin{center}
+      \small
+      МИНИСТЕРСТВО НАУКИ И ВЫСШЕГО ОБРАЗОВАНИЯ РОССИЙСКОЙ ФЕДЕРАЦИИ \\
+      ФЕДЕРАЛЬНОЕ ГОСУДАРСТВЕННОЕ БЮДЖЕТНОЕ ОБРАЗОВАТЕЛЬНОЕ УЧРЕЖДЕНИЕ ВЫСШЕГО ОБРАЗОВАНИЯ \\
+      \guillemotleft НОВОСИБИРСКИЙ ГОСУДАРСТВЕННЫЙ ТЕХНИЧЕСКИЙ УНИВЕРСИТЕТ\guillemotright \\
+      \normalsize
+      Кафедра вычислительной техники \\
+
+      \vspace{12em}
+      % \includegraphics[width=3cm]{nstu_logo}
+      % \vspace{3em}
+
+      \textbf{Отчет по лабораторной работе \textnumero 8 \\
+      по дисциплине: \guillemotleft Программирование\guillemotright \\}
+    \end{center}
+    \vspace{5em}
+    \begin{tabular}{ll}
+      Факультет:     & АВТФ \\
+      Группа:        & АВТ-143\\
+      Студент:       & Васютин А.\,М. \\
+      Преподаватель: & Новицкая Ю.\,В. \\
+      Вариант:       & 4 \\
+    \end{tabular}
+    \vspace{\fill}
+    \begin{center}
+      Новосибирск, 2022 г. \\
+    \end{center}
+  \end{titlepage}
+
+
+  \newpage
+  \renewcommand\contentsname{\centerline{\bfseries\normalsize{\MakeUppercase{Оглавление}}}}
+  \normalsize\selectfont
+  \tableofcontents
+
+  \newpage\section{Лабораторная работа \textnumero 8. Библиотека шаблонных классов STL (Standart Template Library)}
+  \subsection{Цель работы}
+  \par Ознакомиться с шаблонными классами библиотеки STL. Изучить применение этих классов и их методов на практике.
+  \subsection{Задание на лабораторную работу}
+  \par Для встроенного типа (например, int или char) провести временной анализ заданных шаблонных классов на основных операциях: добавление, удаление, поиск, сортировка. Использовать итераторы для работы с контейнерами. Для получения времени выполнения операции засекать системное время начала и окончания операции и автоматически генерировать большое количество данных.
+
+  Структуры данных -- Стек; множество с дубликатами.
+
+  \subsection{Решение}
+  \par В стандартной библиотеке шаблонных классов стек и множество с дубликатами представленны классами queue и multiset и подключаются заголовочными файлами queue и set соответственно. Для замера времени выполнения был реализован макрос, генерирующий функцию, замеряющую время выполнения кода и из-за того, что компилятор, согласно стандарту, не может оптимизировать порядок side-effect'ов, то эти ассемблерные вставки не позволяют ему оптимизировать выполнение кода.
+  \begin{figure}[H]\centering\includegraphics[width=0.5\textwidth]{lab8-test}\label{fig:lab8-test}\caption{Вывод работы программы.}\end{figure}
+
+  \begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+      \begin{axis}[
+        y label style={at={(axis description cs:-0.1,.5)}},
+        xlabel={$n$},
+        ylabel={$t$, мс},
+        xmin=0,
+        ymin=0,
+        ymajorgrids=true,
+        grid style=dashed,
+        width=0.8\textwidth,
+        ]
+        \addplot[color=blue,mark=square]coordinates{
+          (1000000, 30.7867)
+          (2000000, 52.4613)
+          (3000000, 81.4477)
+          (4000000, 104.284)
+          (5000000, 130.616)
+        };
+      \end{axis}
+    \end{tikzpicture}
+    \caption{\textit{stack\_push}}
+  \end{figure}
+
+  \begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+      \begin{axis}[
+        y label style={at={(axis description cs:-0.1,.5)}},
+        xlabel={$n$},
+        ylabel={$t$, мс},
+    xmin=0,
+    ymin=0,
+    ymajorgrids=true,
+    grid style=dashed,
+    width=0.8\textwidth,
+]
+
+\addplot[color=blue,mark=square]coordinates{
+  (1000000, 8.62515)
+  (2000000, 13.771)
+  (3000000, 21.8786)
+  (4000000, 27.5102)
+  (5000000, 34.4332)
+};
+\end{axis}
+\end{tikzpicture}
+    \caption{\textit{stack\_pop}}
+  \end{figure}
+  \begin{figure}[H]
+    \centering
+\begin{tikzpicture}
+  \begin{axis}[
+    y label style={at={(axis description cs:-0.1,.5)}},
+    xlabel={$n$},
+    ylabel={$t$, мс},
+    xmin=0,
+    ymin=0,
+    ymajorgrids=true,
+    grid style=dashed,
+    width=0.8\textwidth,
+]
+
+\addplot[color=blue,mark=square]coordinates{
+  (1000000, 568.533)
+  (2000000, 969.803)
+  (3000000, 1581.72)
+  (4000000, 2017.19)
+  (5000000, 2555.85)
+};
+\end{axis}
+\end{tikzpicture}
+    \caption{\textit{multiset\_insert}}
+  \end{figure}
+  \begin{figure}[H]
+    \centering
+\begin{tikzpicture}
+  \begin{axis}[
+    y label style={at={(axis description cs:-0.1,.5)}},
+    xlabel={$n$},
+    ylabel={$t$, мс},
+    xmin=0,
+    ymin=0,
+    ymajorgrids=true,
+    grid style=dashed,
+    width=0.8\textwidth,
+]
+
+\addplot[color=blue,mark=square]coordinates{
+  (1000000, 123.694)
+  (2000000, 200.234)
+  (3000000, 314.486)
+  (4000000, 398.592)
+  (5000000, 500.921)
+};
+\end{axis}
+\end{tikzpicture}
+    \caption{\textit{multiset\_erase}}
+  \end{figure}
+  \begin{figure}[H]
+    \centering
+\begin{tikzpicture}
+  \begin{axis}[
+    y label style={at={(axis description cs:-0.1,.5)}},
+    xlabel={$n$},
+    ylabel={$t$, мс},
+    xmin=0,
+    ymin=0,
+    ymajorgrids=true,
+    grid style=dashed,
+    width=0.8\textwidth,
+]
+
+\addplot[color=blue,mark=square]coordinates{
+  (1000000, 1243.19)
+  (2000000, 2380.12)
+  (3000000, 3898.47)
+  (4000000, 5374.51)
+  (5000000, 7044.24)
+};
+\end{axis}
+\end{tikzpicture}
+    \caption{\textit{multiset\_find}}
+  \end{figure}
+
+  \subsection{Исходный код}
+  \begin{longlisting}\caption{main.cpp}\inputminted{cpp}{../main.cpp}\label{lst:main-cpp}\end{longlisting}
+
+  \subsection{Выводы}
+  \par В данной лабораторной работе была изучена стандартная библиотека шаблонов и шаблонные контейнеры, содержащиеся в ней (на примере очереди и множества c повторениями). По результатам проведённого анализа, можно сделать выводы, что некоторые операции лишены смысла для конкретного контейнера. Так, нет необходимости в сортировке множества с повторениями, так как оно сортируется автоматически, что немного замедляет все остальные операции. Следовательно, выбирать контейнеры из STL (или создавать свои) нужно исходя из поставленных задач.
+
+
+\end{document}

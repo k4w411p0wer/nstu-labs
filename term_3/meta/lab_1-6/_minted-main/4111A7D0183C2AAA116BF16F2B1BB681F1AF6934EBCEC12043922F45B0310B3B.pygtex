@@ -1,0 +1,4 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{SortedStringArray}\PYG{o}{::}\PYG{n}{SortedStringArray}\PYG{p}{(}\PYG{k}{const}\PYG{+w}{ }\PYG{n}{std}\PYG{o}{::}\PYG{n}{string}\PYG{+w}{ }\PYG{o}{\PYGZam{}}\PYG{n}{filename}\PYG{p}{)}
+\PYG{+w}{  }\PYG{o}{:}\PYG{+w}{ }\PYG{n}{SortedStringArray}\PYG{p}{(}\PYG{n}{filename}\PYG{p}{.}\PYG{n}{c\PYGZus{}str}\PYG{p}{())}\PYG{+w}{ }\PYG{p}{\PYGZob{}\PYGZcb{}}
+\end{Verbatim}

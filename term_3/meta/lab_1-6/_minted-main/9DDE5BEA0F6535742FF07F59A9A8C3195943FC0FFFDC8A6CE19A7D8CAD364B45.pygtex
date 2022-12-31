@@ -1,0 +1,43 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+cp}{\PYGZsh{}pragma once}
+
+\PYG{c+cp}{\PYGZsh{}include}\PYG{+w}{ }\PYG{c+cpf}{\PYGZdq{}matrix.hpp\PYGZdq{}}
+\PYG{c+cp}{\PYGZsh{}include}\PYG{+w}{ }\PYG{c+cpf}{\PYGZlt{}exception\PYGZgt{}}
+\PYG{c+cp}{\PYGZsh{}include}\PYG{+w}{ }\PYG{c+cpf}{\PYGZlt{}ostream\PYGZgt{}}
+
+
+\PYG{k}{class}\PYG{+w}{ }\PYG{n+nc}{CircularQueueOfMatrixNode}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{  }\PYG{k}{private}\PYG{o}{:}
+\PYG{+w}{  }\PYG{n}{CircularQueueOfMatrixNode}\PYG{+w}{ }\PYG{o}{*}\PYG{n}{\PYGZus{}prev}\PYG{p}{;}
+\PYG{+w}{  }\PYG{n}{CircularQueueOfMatrixNode}\PYG{+w}{ }\PYG{o}{*}\PYG{n}{\PYGZus{}next}\PYG{p}{;}
+\PYG{+w}{  }\PYG{n}{Matrix}\PYG{+w}{ }\PYG{o}{\PYGZam{}}\PYG{n}{\PYGZus{}data}\PYG{p}{;}
+
+\PYG{+w}{  }\PYG{k}{public}\PYG{o}{:}
+\PYG{+w}{  }\PYG{n}{CircularQueueOfMatrixNode}\PYG{p}{(}\PYG{n}{Matrix}\PYG{+w}{ }\PYG{o}{\PYGZam{}}\PYG{p}{);}
+\PYG{+w}{  }\PYG{o}{\PYGZti{}}\PYG{n}{CircularQueueOfMatrixNode}\PYG{p}{()}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k}{default}\PYG{p}{;}
+
+\PYG{+w}{  }\PYG{n}{CircularQueueOfMatrixNode}\PYG{+w}{ }\PYG{o}{*}\PYG{n+nf}{getPrev}\PYG{p}{();}
+\PYG{+w}{  }\PYG{k+kt}{void}\PYG{+w}{ }\PYG{n+nf}{setPrev}\PYG{p}{(}\PYG{n}{CircularQueueOfMatrixNode}\PYG{+w}{ }\PYG{o}{*}\PYG{p}{);}
+\PYG{+w}{  }\PYG{n}{CircularQueueOfMatrixNode}\PYG{+w}{ }\PYG{o}{*}\PYG{n+nf}{getNext}\PYG{p}{();}
+\PYG{+w}{  }\PYG{k+kt}{void}\PYG{+w}{ }\PYG{n+nf}{setNext}\PYG{p}{(}\PYG{n}{CircularQueueOfMatrixNode}\PYG{+w}{ }\PYG{o}{*}\PYG{p}{);}
+\PYG{+w}{  }\PYG{n}{Matrix}\PYG{+w}{ }\PYG{o}{\PYGZam{}}\PYG{n+nf}{getMatrix}\PYG{p}{();}
+\PYG{p}{\PYGZcb{};}
+
+\PYG{k}{class}\PYG{+w}{ }\PYG{n+nc}{CircularQueueOfMatrix}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{  }\PYG{k}{private}\PYG{o}{:}
+\PYG{+w}{  }\PYG{n}{CircularQueueOfMatrixNode}\PYG{+w}{ }\PYG{o}{*}\PYG{n}{\PYGZus{}head}\PYG{p}{;}
+
+\PYG{+w}{  }\PYG{k}{public}\PYG{o}{:}
+\PYG{+w}{  }\PYG{n}{CircularQueueOfMatrix}\PYG{p}{();}
+\PYG{+w}{  }\PYG{o}{\PYGZti{}}\PYG{n}{CircularQueueOfMatrix}\PYG{p}{();}
+\PYG{+w}{  }\PYG{k+kt}{void}\PYG{+w}{ }\PYG{n+nf}{add}\PYG{p}{(}\PYG{n}{Matrix}\PYG{+w}{ }\PYG{o}{\PYGZam{}}\PYG{p}{);}
+\PYG{+w}{  }\PYG{n}{Matrix}\PYG{+w}{ }\PYG{o}{\PYGZam{}}\PYG{n+nf}{remove}\PYG{p}{();}
+\PYG{+w}{  }\PYG{k+kt}{void}\PYG{+w}{ }\PYG{n+nf}{fprint}\PYG{p}{(}\PYG{n}{std}\PYG{o}{::}\PYG{n}{ostream}\PYG{+w}{ }\PYG{o}{\PYGZam{}}\PYG{p}{);}
+\PYG{+w}{  }\PYG{k+kt}{void}\PYG{+w}{ }\PYG{n+nf}{print}\PYG{p}{();}
+
+\PYG{+w}{  }\PYG{k}{class}\PYG{+w}{ }\PYG{n+nc}{NotEnoughOfItems}\PYG{+w}{ }\PYG{o}{:}\PYG{+w}{ }\PYG{k}{public}\PYG{+w}{ }\PYG{n}{std}\PYG{o}{::}\PYG{n}{exception}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{k}{public}\PYG{o}{:}
+\PYG{+w}{    }\PYG{k}{const}\PYG{+w}{ }\PYG{k+kt}{char}\PYG{+w}{ }\PYG{o}{*}\PYG{n}{what}\PYG{p}{()}\PYG{+w}{ }\PYG{k}{const}\PYG{+w}{ }\PYG{k}{noexcept}\PYG{p}{;}
+\PYG{+w}{  }\PYG{p}{\PYGZcb{};}
+\PYG{p}{\PYGZcb{};}
+\end{Verbatim}

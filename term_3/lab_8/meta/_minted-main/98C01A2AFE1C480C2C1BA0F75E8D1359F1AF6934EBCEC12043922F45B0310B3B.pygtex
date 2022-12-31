@@ -1,0 +1,15 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n+nf}{SortedStringArray::find}\PYG{p}{(}\PYG{n}{const\PYGZus{}reference}\PYG{+w}{ }\PYG{n}{str}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{  }\PYG{k}{auto}\PYG{+w}{ }\PYG{n}{pos}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{bisect\PYGZus{}left}\PYG{p}{(}\PYG{n}{str}\PYG{p}{);}
+\PYG{+w}{  }\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{pos}\PYG{+w}{ }\PYG{o}{\PYGZlt{}}\PYG{+w}{ }\PYG{n}{size\PYGZus{}}\PYG{+w}{ }\PYG{o}{\PYGZam{}\PYGZam{}}\PYG{+w}{ }\PYG{n}{at}\PYG{p}{(}\PYG{n}{pos}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{==}\PYG{+w}{ }\PYG{n}{str}\PYG{p}{)}
+\PYG{+w}{    }\PYG{k}{return}\PYG{+w}{ }\PYG{n}{pos}\PYG{p}{;}
+\PYG{+w}{  }\PYG{k}{return}\PYG{+w}{ }\PYG{l+m+mi}{\PYGZhy{}1}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n+nf}{SortedStringArray::rfind}\PYG{p}{(}\PYG{n}{const\PYGZus{}reference}\PYG{+w}{ }\PYG{n}{str}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{  }\PYG{k}{auto}\PYG{+w}{ }\PYG{n}{pos}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{bisect\PYGZus{}right}\PYG{p}{(}\PYG{n}{str}\PYG{p}{);}
+\PYG{+w}{  }\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{pos}\PYG{+w}{ }\PYG{o}{\PYGZlt{}}\PYG{+w}{ }\PYG{n}{size\PYGZus{}}\PYG{+w}{ }\PYG{o}{\PYGZam{}\PYGZam{}}\PYG{+w}{ }\PYG{n}{at}\PYG{p}{(}\PYG{n}{pos}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{+w}{ }\PYG{l+m+mi}{1}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{==}\PYG{+w}{ }\PYG{n}{str}\PYG{p}{)}
+\PYG{+w}{    }\PYG{k}{return}\PYG{+w}{ }\PYG{n}{pos}\PYG{p}{;}
+\PYG{+w}{  }\PYG{k}{return}\PYG{+w}{ }\PYG{l+m+mi}{\PYGZhy{}1}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

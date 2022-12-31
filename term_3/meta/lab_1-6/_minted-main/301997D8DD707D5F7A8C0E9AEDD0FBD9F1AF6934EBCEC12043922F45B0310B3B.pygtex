@@ -1,0 +1,9 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{ConstIterator}\PYG{+w}{ }\PYG{o}{\PYGZam{}}\PYG{n}{ConstIterator}\PYG{o}{::}\PYG{k}{operator}\PYG{o}{=}\PYG{p}{(}\PYG{k}{const}\PYG{+w}{ }\PYG{n}{ConstIterator}\PYG{+w}{ }\PYG{o}{\PYGZam{}}\PYG{n}{other}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{  }\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{k}{this}\PYG{+w}{ }\PYG{o}{==}\PYG{+w}{ }\PYG{o}{\PYGZam{}}\PYG{n}{other}\PYG{p}{)}
+\PYG{+w}{    }\PYG{k}{return}\PYG{+w}{ }\PYG{o}{*}\PYG{k}{this}\PYG{p}{;}
+\PYG{+w}{  }\PYG{n}{ssa\PYGZus{}}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{other}\PYG{p}{.}\PYG{n}{ssa\PYGZus{}}\PYG{p}{;}
+\PYG{+w}{  }\PYG{n}{position\PYGZus{}}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{other}\PYG{p}{.}\PYG{n}{position\PYGZus{}}\PYG{p}{;}
+\PYG{+w}{  }\PYG{k}{return}\PYG{+w}{ }\PYG{o}{*}\PYG{k}{this}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

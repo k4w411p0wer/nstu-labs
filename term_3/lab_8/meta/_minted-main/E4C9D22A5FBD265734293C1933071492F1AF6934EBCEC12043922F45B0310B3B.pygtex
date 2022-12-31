@@ -1,0 +1,11 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+cm}{/* sorted\PYGZus{}string\PYGZus{}array.hpp */}
+\PYG{k}{class}\PYG{+w}{ }\PYG{n+nc}{FileNotOpen}\PYG{+w}{ }\PYG{o}{:}\PYG{+w}{ }\PYG{k}{public}\PYG{+w}{ }\PYG{n}{std}\PYG{o}{::}\PYG{n}{exception}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{  }\PYG{k}{const}\PYG{+w}{ }\PYG{k+kt}{char}\PYG{+w}{ }\PYG{o}{*}\PYG{n+nf}{what}\PYG{p}{()}\PYG{+w}{ }\PYG{k}{const}\PYG{+w}{ }\PYG{k}{noexcept}\PYG{+w}{ }\PYG{k}{override}\PYG{p}{;}
+\PYG{p}{\PYGZcb{};}
+
+\PYG{c+cm}{/* sorted\PYGZus{}string\PYGZus{}array.cpp */}
+\PYG{k}{const}\PYG{+w}{ }\PYG{k+kt}{char}\PYG{+w}{ }\PYG{o}{*}\PYG{n+nf}{SortedStringArray::FileNotOpen::what}\PYG{p}{()}\PYG{+w}{ }\PYG{k}{const}\PYG{+w}{ }\PYG{k}{noexcept}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{  }\PYG{k}{return}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}File not open\PYGZdq{}}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

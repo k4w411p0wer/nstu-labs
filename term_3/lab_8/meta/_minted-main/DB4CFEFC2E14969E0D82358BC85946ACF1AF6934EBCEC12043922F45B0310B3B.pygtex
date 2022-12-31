@@ -1,0 +1,3 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{operator}\PYG{o}{\PYGZlt{}=\PYGZgt{}}\PYG{p}{(}\PYG{k}{const}\PYG{+w}{ }\PYG{n}{ConstIterator}\PYG{+w}{ }\PYG{o}{\PYGZam{}}\PYG{p}{)}\PYG{+w}{ }\PYG{k}{const}\PYG{+w}{ }\PYG{k}{noexcept}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k}{default}\PYG{p}{;}
+\end{Verbatim}

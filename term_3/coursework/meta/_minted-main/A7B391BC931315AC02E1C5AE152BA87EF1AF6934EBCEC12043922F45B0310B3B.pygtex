@@ -1,0 +1,35 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{private}\PYG{o}{:}
+\PYG{+w}{  }\PYG{k+kt}{void}\PYG{+w}{ }\PYG{n}{throw\PYGZus{}if\PYGZus{}not\PYGZus{}open}\PYG{p}{();}
+\PYG{+w}{  }\PYG{k+kt}{size\PYGZus{}t}\PYG{+w}{ }\PYG{n+nf}{\PYGZus{}get\PYGZus{}file\PYGZus{}size}\PYG{p}{();}
+\PYG{+w}{  }\PYG{k+kt}{double}\PYG{+w}{ }\PYG{n+nf}{\PYGZus{}get\PYGZus{}used\PYGZus{}memory\PYGZus{}ratio}\PYG{p}{();}
+\PYG{+w}{  }\PYG{k+kt}{void}\PYG{+w}{ }\PYG{n+nf}{\PYGZus{}write}\PYG{p}{(}\PYG{n}{pos\PYGZus{}type}\PYG{+w}{ }\PYG{n}{pos}\PYG{p}{,}\PYG{+w}{ }\PYG{k}{const}\PYG{+w}{ }\PYG{k+kt}{char}\PYG{+w}{ }\PYG{o}{*}\PYG{n}{val}\PYG{p}{,}\PYG{+w}{ }\PYG{k+kt}{size\PYGZus{}t}\PYG{+w}{ }\PYG{n}{size}\PYG{p}{);}
+\PYG{+w}{  }\PYG{k+kt}{void}\PYG{+w}{ }\PYG{n+nf}{\PYGZus{}read}\PYG{p}{(}\PYG{n}{pos\PYGZus{}type}\PYG{+w}{ }\PYG{n}{pos}\PYG{p}{,}\PYG{+w}{ }\PYG{k+kt}{char}\PYG{+w}{ }\PYG{o}{*}\PYG{n}{buf}\PYG{p}{,}\PYG{+w}{ }\PYG{k+kt}{size\PYGZus{}t}\PYG{+w}{ }\PYG{n}{size}\PYG{p}{);}
+\PYG{+w}{  }\PYG{k+kt}{void}\PYG{+w}{ }\PYG{n+nf}{\PYGZus{}read\PYGZus{}header}\PYG{p}{();}
+\PYG{+w}{  }\PYG{k+kt}{void}\PYG{+w}{ }\PYG{n+nf}{\PYGZus{}write\PYGZus{}header}\PYG{p}{();}
+\PYG{+w}{  }\PYG{k+kt}{void}\PYG{+w}{ }\PYG{n+nf}{\PYGZus{}alloc}\PYG{p}{();}
+\PYG{+w}{  }\PYG{k+kt}{void}\PYG{+w}{ }\PYG{n+nf}{\PYGZus{}resize}\PYG{p}{();}
+\PYG{k}{public}\PYG{o}{:}
+\PYG{+w}{  }\PYG{n}{SortedStringArray}\PYG{p}{()}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k}{default}\PYG{p}{;}
+\PYG{+w}{  }\PYG{n}{SortedStringArray}\PYG{p}{(}\PYG{k}{const}\PYG{+w}{ }\PYG{k+kt}{char}\PYG{+w}{ }\PYG{o}{*}\PYG{n}{filename}\PYG{p}{);}
+\PYG{+w}{  }\PYG{n}{SortedStringArray}\PYG{p}{(}\PYG{k}{const}\PYG{+w}{ }\PYG{n}{std}\PYG{o}{::}\PYG{n}{string}\PYG{+w}{ }\PYG{o}{\PYGZam{}}\PYG{n}{filename}\PYG{p}{);}
+\PYG{+w}{  }\PYG{o}{\PYGZti{}}\PYG{n}{SortedStringArray}\PYG{p}{();}
+\PYG{+w}{  }\PYG{k+kt}{void}\PYG{+w}{ }\PYG{n+nf}{open}\PYG{p}{(}\PYG{k}{const}\PYG{+w}{ }\PYG{k+kt}{char}\PYG{+w}{ }\PYG{o}{*}\PYG{n}{filename}\PYG{p}{);}
+\PYG{+w}{  }\PYG{k+kt}{void}\PYG{+w}{ }\PYG{n+nf}{open}\PYG{p}{(}\PYG{k}{const}\PYG{+w}{ }\PYG{n}{std}\PYG{o}{::}\PYG{n}{string}\PYG{+w}{ }\PYG{o}{\PYGZam{}}\PYG{n}{filename}\PYG{p}{);}
+\PYG{+w}{  }\PYG{k+kt}{void}\PYG{+w}{ }\PYG{n+nf}{close}\PYG{p}{();}
+\PYG{+w}{  }\PYG{n}{size\PYGZus{}type}\PYG{+w}{ }\PYG{n+nf}{size}\PYG{p}{()}\PYG{+w}{ }\PYG{k}{const}\PYG{p}{;}
+\PYG{+w}{  }\PYG{n}{size\PYGZus{}type}\PYG{+w}{ }\PYG{n+nf}{bisect\PYGZus{}left}\PYG{p}{(}\PYG{n}{const\PYGZus{}reference}\PYG{+w}{ }\PYG{n}{str}\PYG{p}{);}
+\PYG{+w}{  }\PYG{n}{size\PYGZus{}type}\PYG{+w}{ }\PYG{n+nf}{bisect\PYGZus{}right}\PYG{p}{(}\PYG{n}{const\PYGZus{}reference}\PYG{+w}{ }\PYG{n}{str}\PYG{p}{);}
+\PYG{+w}{  }\PYG{n}{size\PYGZus{}type}\PYG{+w}{ }\PYG{n+nf}{bisect}\PYG{p}{(}\PYG{n}{const\PYGZus{}reference}\PYG{+w}{ }\PYG{n}{str}\PYG{p}{);}
+\PYG{+w}{  }\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n+nf}{find}\PYG{p}{(}\PYG{n}{const\PYGZus{}reference}\PYG{+w}{ }\PYG{n}{str}\PYG{p}{);}
+\PYG{+w}{  }\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n+nf}{rfind}\PYG{p}{(}\PYG{n}{const\PYGZus{}reference}\PYG{+w}{ }\PYG{n}{str}\PYG{p}{);}
+\PYG{+w}{  }\PYG{k+kt}{void}\PYG{+w}{ }\PYG{n+nf}{add}\PYG{p}{(}\PYG{n}{const\PYGZus{}reference}\PYG{+w}{ }\PYG{n}{str}\PYG{p}{);}
+\PYG{+w}{  }\PYG{n}{value\PYGZus{}type}\PYG{+w}{ }\PYG{n+nf}{at}\PYG{p}{(}\PYG{n}{size\PYGZus{}type}\PYG{+w}{ }\PYG{n}{index}\PYG{p}{);}
+\PYG{+w}{  }\PYG{k+kt}{void}\PYG{+w}{ }\PYG{n+nf}{remove}\PYG{p}{(}\PYG{n}{size\PYGZus{}type}\PYG{+w}{ }\PYG{n}{index}\PYG{p}{);}
+\PYG{+w}{  }\PYG{k+kt}{void}\PYG{+w}{ }\PYG{n+nf}{defragment}\PYG{p}{();}
+\PYG{c+cp}{\PYGZsh{}ifndef NDEBUG}
+\PYG{+w}{  }\PYG{k+kt}{void}\PYG{+w}{ }\PYG{n+nf}{print\PYGZus{}debug\PYGZus{}info}\PYG{p}{();}
+\PYG{c+cp}{\PYGZsh{}endif}
+\PYG{+w}{  }\PYG{n}{ConstIterator}\PYG{+w}{ }\PYG{n+nf}{begin}\PYG{p}{()}\PYG{+w}{ }\PYG{k}{const}\PYG{p}{;}
+\PYG{+w}{  }\PYG{n}{ConstIterator}\PYG{+w}{ }\PYG{n+nf}{end}\PYG{p}{()}\PYG{+w}{ }\PYG{k}{const}\PYG{p}{;}
+\end{Verbatim}

@@ -1,0 +1,9 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{struct}\PYG{+w}{ }\PYG{n+nc}{SortedStringArray}\PYG{o}{::}\PYG{n}{ConstIterator}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{  }\PYG{c+cm}{/* ... */}
+\PYG{+w}{  }\PYG{k}{private}\PYG{o}{:}
+\PYG{+w}{  }\PYG{n}{size\PYGZus{}type}\PYG{+w}{ }\PYG{n}{position\PYGZus{}}\PYG{p}{;}
+\PYG{+w}{  }\PYG{n}{SortedStringArray}\PYG{+w}{ }\PYG{o}{*}\PYG{n}{ssa\PYGZus{}}\PYG{p}{;}
+\PYG{+w}{  }\PYG{c+cm}{/* ... */}
+\PYG{p}{\PYGZcb{};}
+\end{Verbatim}

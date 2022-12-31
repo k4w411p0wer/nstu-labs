@@ -1,0 +1,12 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{using}\PYG{+w}{ }\PYG{n}{ConstIterator}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{SortedStringArray}\PYG{o}{::}\PYG{n}{ConstIterator}\PYG{p}{;}
+
+\PYG{n}{ConstIterator}\PYG{o}{::}\PYG{n}{ConstIterator}\PYG{p}{(}\PYG{n}{SortedStringArray}\PYG{+w}{ }\PYG{o}{*}\PYG{n}{ssa}\PYG{p}{)}
+\PYG{+w}{    }\PYG{o}{:}\PYG{+w}{ }\PYG{n}{ConstIterator}\PYG{o}{::}\PYG{n}{ConstIterator}\PYG{p}{\PYGZob{}}\PYG{n}{ssa}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m+mi}{0}\PYG{p}{\PYGZcb{}}\PYG{+w}{ }\PYG{p}{\PYGZob{}\PYGZcb{}}
+
+\PYG{n}{ConstIterator}\PYG{o}{::}\PYG{n}{ConstIterator}\PYG{p}{(}\PYG{n}{SortedStringArray}\PYG{+w}{ }\PYG{o}{*}\PYG{n}{ssa}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{size\PYGZus{}type}\PYG{+w}{ }\PYG{n}{position}\PYG{p}{)}
+\PYG{+w}{    }\PYG{o}{:}\PYG{+w}{ }\PYG{n}{ssa\PYGZus{}}\PYG{p}{\PYGZob{}}\PYG{n}{ssa}\PYG{p}{\PYGZcb{},}\PYG{+w}{ }\PYG{n}{position\PYGZus{}}\PYG{p}{\PYGZob{}}\PYG{n}{position}\PYG{p}{\PYGZcb{}}\PYG{+w}{ }\PYG{p}{\PYGZob{}\PYGZcb{}}
+
+\PYG{n}{ConstIterator}\PYG{o}{::}\PYG{n}{ConstIterator}\PYG{p}{(}\PYG{k}{const}\PYG{+w}{ }\PYG{n}{ConstIterator}\PYG{+w}{ }\PYG{o}{\PYGZam{}}\PYG{n}{other}\PYG{p}{)}
+\PYG{+w}{    }\PYG{o}{:}\PYG{+w}{ }\PYG{n}{ssa\PYGZus{}}\PYG{p}{\PYGZob{}}\PYG{n}{other}\PYG{p}{.}\PYG{n}{ssa\PYGZus{}}\PYG{p}{\PYGZcb{},}\PYG{+w}{ }\PYG{n}{position\PYGZus{}}\PYG{p}{\PYGZob{}}\PYG{n}{other}\PYG{p}{.}\PYG{n}{position\PYGZus{}}\PYG{p}{\PYGZcb{}}\PYG{+w}{ }\PYG{p}{\PYGZob{}\PYGZcb{}}
+\end{Verbatim}

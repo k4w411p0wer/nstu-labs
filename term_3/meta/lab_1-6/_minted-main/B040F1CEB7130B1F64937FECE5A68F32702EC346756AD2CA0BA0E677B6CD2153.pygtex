@@ -1,0 +1,27 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+cp}{\PYGZsh{}include}\PYG{+w}{ }\PYG{c+cpf}{\PYGZdq{}file.hpp\PYGZdq{}}
+
+\PYG{c+cp}{\PYGZsh{}include}\PYG{+w}{ }\PYG{c+cpf}{\PYGZlt{}ios\PYGZgt{}}
+
+
+\PYG{n}{File}\PYG{o}{::}\PYG{n}{File}\PYG{p}{(}\PYG{k}{const}\PYG{+w}{ }\PYG{k+kt}{char}\PYG{+w}{ }\PYG{o}{*}\PYG{n}{filename}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{std}\PYG{o}{::}\PYG{n}{ios\PYGZus{}base}\PYG{o}{::}\PYG{n}{openmode}\PYG{+w}{ }\PYG{n}{mode}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{:}\PYG{+w}{ }\PYG{n}{\PYGZus{}mode}\PYG{p}{(}\PYG{n}{mode}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{  }\PYG{n}{\PYGZus{}fs}\PYG{p}{.}\PYG{n}{open}\PYG{p}{(}\PYG{n}{filename}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{mode}\PYG{p}{);}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{n}{File}\PYG{o}{::\PYGZti{}}\PYG{n}{File}\PYG{p}{()}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{  }\PYG{n}{close}\PYG{p}{();}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{k+kt}{void}\PYG{+w}{ }\PYG{n}{File}\PYG{o}{::}\PYG{n}{close}\PYG{p}{()}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{  }\PYG{n}{\PYGZus{}fs}\PYG{p}{.}\PYG{n}{close}\PYG{p}{();}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{File}\PYG{o}{::}\PYG{n}{getMode}\PYG{p}{()}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{  }\PYG{k}{return}\PYG{+w}{ }\PYG{k}{static\PYGZus{}cast}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{int}\PYG{o}{\PYGZgt{}}\PYG{p}{(}\PYG{n}{\PYGZus{}mode}\PYG{p}{);}
+\PYG{p}{\PYGZcb{}}
+
+
+\PYG{n}{std}\PYG{o}{::}\PYG{n}{fstream}\PYG{+w}{ }\PYG{o}{\PYGZam{}}\PYG{n}{File}\PYG{o}{::}\PYG{n}{getFStream}\PYG{p}{()}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{  }\PYG{k}{return}\PYG{+w}{ }\PYG{n}{\PYGZus{}fs}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

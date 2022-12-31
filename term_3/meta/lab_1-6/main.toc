@@ -1,0 +1,39 @@
+\selectlanguage *{russian}
+\selectlanguage *[babelshorthands=true]{russian}
+\contentsline {section}{\numberline {1}Лабораторная работа \textnumero 1. Разработка классов, создание конструкторов и деструкторов}{3}{section.0.1}%
+\contentsline {subsection}{\numberline {1.1}Цель работы}{3}{subsection.0.1.1}%
+\contentsline {subsection}{\numberline {1.2}Задание на лабораторную работу}{3}{subsection.0.1.2}%
+\contentsline {subsection}{\numberline {1.3}Решение}{3}{subsection.0.1.3}%
+\contentsline {subsection}{\numberline {1.4}Исходный код}{4}{subsection.0.1.4}%
+\contentsline {subsection}{\numberline {1.5}Выводы}{8}{subsection.0.1.5}%
+\contentsline {section}{\numberline {2}Лабораторная работа \textnumero 2. Переопределение операций}{9}{section.0.2}%
+\contentsline {subsection}{\numberline {2.1}Цель работы}{9}{subsection.0.2.1}%
+\contentsline {subsection}{\numberline {2.2}Задание на лабораторную работу}{9}{subsection.0.2.2}%
+\contentsline {subsection}{\numberline {2.3}Решение}{9}{subsection.0.2.3}%
+\contentsline {subsection}{\numberline {2.4}Исходный код}{10}{subsection.0.2.4}%
+\contentsline {subsection}{\numberline {2.5}Выводы}{18}{subsection.0.2.5}%
+\contentsline {section}{\numberline {3}Лабораторная работа \textnumero 3. Организация ввода-вывода}{19}{section.0.3}%
+\contentsline {subsection}{\numberline {3.1}Цель работы}{19}{subsection.0.3.1}%
+\contentsline {subsection}{\numberline {3.2}Задание на лабораторную работу}{19}{subsection.0.3.2}%
+\contentsline {subsection}{\numberline {3.3}Решение}{19}{subsection.0.3.3}%
+\contentsline {subsection}{\numberline {3.4}Исходный код}{20}{subsection.0.3.4}%
+\contentsline {subsection}{\numberline {3.5}Выводы}{30}{subsection.0.3.5}%
+\contentsline {section}{\numberline {4}Лабораторная работа \textnumero 4. Наследование}{31}{section.0.4}%
+\contentsline {subsection}{\numberline {4.1}Цель работы}{31}{subsection.0.4.1}%
+\contentsline {subsection}{\numberline {4.2}Задание на лабораторную работу}{31}{subsection.0.4.2}%
+\contentsline {subsection}{\numberline {4.3}Решение}{31}{subsection.0.4.3}%
+\contentsline {subsection}{\numberline {4.4}Исходный код}{32}{subsection.0.4.4}%
+\contentsline {subsection}{\numberline {4.5}Выводы}{45}{subsection.0.4.5}%
+\contentsline {section}{\numberline {5}Лабораторная работа \textnumero 5. Создание динамического списка объектов, связанных наследованием}{46}{section.0.5}%
+\contentsline {subsection}{\numberline {5.1}Цель работы}{46}{subsection.0.5.1}%
+\contentsline {subsection}{\numberline {5.2}Задание на лабораторную работу}{46}{subsection.0.5.2}%
+\contentsline {subsection}{\numberline {5.3}Решение}{46}{subsection.0.5.3}%
+\contentsline {subsection}{\numberline {5.4}Исходный код}{47}{subsection.0.5.4}%
+\contentsline {subsection}{\numberline {5.5}Выводы}{63}{subsection.0.5.5}%
+\contentsline {section}{\numberline {6}Лабораторная работа \textnumero 6. Обработка исключительных ситуаций}{64}{section.0.6}%
+\contentsline {subsection}{\numberline {6.1}Цель работы}{64}{subsection.0.6.1}%
+\contentsline {subsection}{\numberline {6.2}Задание на лабораторную работу}{64}{subsection.0.6.2}%
+\contentsline {subsection}{\numberline {6.3}Решение}{64}{subsection.0.6.3}%
+\contentsline {subsection}{\numberline {6.4}Исходный код}{64}{subsection.0.6.4}%
+\contentsline {subsection}{\numberline {6.5}Выводы}{81}{subsection.0.6.5}%
+\contentsline {section}{\nameref {sec:end}}{82}{section*.39}%

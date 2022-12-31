@@ -1,0 +1,38 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+cp}{\PYGZsh{}include}\PYG{+w}{ }\PYG{c+cpf}{\PYGZdq{}matrix.hpp\PYGZdq{}}
+
+\PYG{c+cp}{\PYGZsh{}include}\PYG{+w}{ }\PYG{c+cpf}{\PYGZlt{}iostream\PYGZgt{}}
+
+\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n+nf}{main}\PYG{p}{()}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{  }\PYG{n}{std}\PYG{o}{::}\PYG{n}{cout}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZlt{}}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}Test 1:\PYGZdq{}}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZlt{}}\PYG{+w}{ }\PYG{n}{std}\PYG{o}{::}\PYG{n}{endl}\PYG{p}{;}
+\PYG{+w}{  }\PYG{n}{Matrix}\PYG{+w}{ }\PYG{n}{matrix}\PYG{p}{(}\PYG{l+m+mi}{5}\PYG{p}{);}
+\PYG{+w}{  }\PYG{k}{for}\PYG{+w}{ }\PYG{p}{(}\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{i}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mi}{0}\PYG{p}{;}\PYG{+w}{ }\PYG{n}{i}\PYG{+w}{ }\PYG{o}{\PYGZlt{}}\PYG{+w}{ }\PYG{l+m+mi}{5}\PYG{+w}{ }\PYG{o}{*}\PYG{+w}{ }\PYG{l+m+mi}{5}\PYG{p}{;}\PYG{+w}{ }\PYG{o}{++}\PYG{n}{i}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{    }\PYG{n}{matrix}\PYG{p}{.}\PYG{n}{set}\PYG{p}{(}\PYG{n}{i}\PYG{+w}{ }\PYG{o}{/}\PYG{+w}{ }\PYG{l+m+mi}{5}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{i}\PYG{+w}{ }\PYG{o}{\PYGZpc{}}\PYG{+w}{ }\PYG{l+m+mi}{5}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{i}\PYG{p}{);}
+\PYG{+w}{  }\PYG{p}{\PYGZcb{}}
+\PYG{+w}{  }\PYG{n}{matrix}\PYG{p}{.}\PYG{n}{print}\PYG{p}{();}
+
+\PYG{+w}{  }\PYG{n}{std}\PYG{o}{::}\PYG{n}{cout}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZlt{}}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}Test 2: Транспонированная матрица\PYGZdq{}}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZlt{}}\PYG{+w}{ }\PYG{n}{std}\PYG{o}{::}\PYG{n}{endl}\PYG{p}{;}
+\PYG{+w}{  }\PYG{n}{Matrix}\PYG{+w}{ }\PYG{n}{tr}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{matrix}\PYG{p}{.}\PYG{n}{transpose}\PYG{p}{();}
+\PYG{+w}{  }\PYG{n}{tr}\PYG{p}{.}\PYG{n}{print}\PYG{p}{();}
+
+\PYG{+w}{  }\PYG{n}{std}\PYG{o}{::}\PYG{n}{cout}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZlt{}}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}Test 3: заполнение матрицы\PYGZdq{}}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZlt{}}\PYG{+w}{ }\PYG{n}{std}\PYG{o}{::}\PYG{n}{endl}\PYG{p}{;}
+\PYG{+w}{  }\PYG{n}{Matrix}\PYG{+w}{ }\PYG{n}{fill}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{Matrix}\PYG{o}{::}\PYG{n}{fill}\PYG{p}{(}\PYG{l+m+mi}{5}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m+mi}{5}\PYG{p}{);}
+\PYG{+w}{  }\PYG{n}{fill}\PYG{p}{.}\PYG{n}{print}\PYG{p}{();}
+
+\PYG{+w}{  }\PYG{n}{std}\PYG{o}{::}\PYG{n}{cout}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZlt{}}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}Test 4: диагональная матрица\PYGZdq{}}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZlt{}}\PYG{+w}{ }\PYG{n}{std}\PYG{o}{::}\PYG{n}{endl}\PYG{p}{;}
+\PYG{+w}{  }\PYG{n}{Matrix}\PYG{+w}{ }\PYG{n}{diagonal}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{Matrix}\PYG{o}{::}\PYG{n}{diagonal}\PYG{p}{(}\PYG{l+m+mi}{5}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m+mi}{5}\PYG{p}{);}
+\PYG{+w}{  }\PYG{n}{diagonal}\PYG{p}{.}\PYG{n}{print}\PYG{p}{();}
+\PYG{+w}{  }\PYG{n}{std}\PYG{o}{::}\PYG{n}{cout}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZlt{}}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}Test 5: единичная матрица\PYGZdq{}}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZlt{}}\PYG{+w}{ }\PYG{n}{std}\PYG{o}{::}\PYG{n}{endl}\PYG{p}{;}
+\PYG{+w}{  }\PYG{n}{Matrix}\PYG{+w}{ }\PYG{n}{identity}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{Matrix}\PYG{o}{::}\PYG{n}{identity}\PYG{p}{(}\PYG{l+m+mi}{5}\PYG{p}{);}
+\PYG{+w}{  }\PYG{n}{identity}\PYG{p}{.}\PYG{n}{print}\PYG{p}{();}
+\PYG{+w}{  }\PYG{n}{std}\PYG{o}{::}\PYG{n}{cout}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZlt{}}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}Test 6: матрица нулей\PYGZdq{}}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZlt{}}\PYG{+w}{ }\PYG{n}{std}\PYG{o}{::}\PYG{n}{endl}\PYG{p}{;}
+\PYG{+w}{  }\PYG{n}{Matrix}\PYG{+w}{ }\PYG{n}{zeros}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{Matrix}\PYG{o}{::}\PYG{n}{zeros}\PYG{p}{(}\PYG{l+m+mi}{5}\PYG{p}{);}
+\PYG{+w}{  }\PYG{n}{zeros}\PYG{p}{.}\PYG{n}{print}\PYG{p}{();}
+\PYG{+w}{  }\PYG{n}{std}\PYG{o}{::}\PYG{n}{cout}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZlt{}}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}Test 7: копирование и сложение\PYGZdq{}}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZlt{}}\PYG{+w}{ }\PYG{n}{std}\PYG{o}{::}\PYG{n}{endl}\PYG{p}{;}
+\PYG{+w}{  }\PYG{n}{Matrix}\PYG{+w}{ }\PYG{n}{copy}\PYG{p}{(}\PYG{n}{matrix}\PYG{p}{);}
+
+\PYG{+w}{  }\PYG{n}{matrix}\PYG{p}{.}\PYG{n}{plus}\PYG{p}{(}\PYG{n}{copy}\PYG{p}{.}\PYG{n}{plus}\PYG{p}{(}\PYG{n}{Matrix}\PYG{o}{::}\PYG{n}{fill}\PYG{p}{(}\PYG{n}{copy}\PYG{p}{.}\PYG{n}{getSize}\PYG{p}{(),}\PYG{+w}{ }\PYG{l+m+mi}{1}\PYG{p}{))).}\PYG{n}{print}\PYG{p}{();}
+
+\PYG{+w}{  }\PYG{k}{return}\PYG{+w}{ }\PYG{l+m+mi}{0}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

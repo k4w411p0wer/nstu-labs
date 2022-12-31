@@ -27,7 +27,7 @@ class Matrix {
 
 
   Matrix plus(const Matrix &) const;
-  /*virtual */void fprint(std::ostream &) const;
+  virtual void fprint(std::ostream &) const;
   void print() const;
   Matrix transpose() const;
   std::size_t getRows() const;
@@ -93,7 +93,7 @@ class VectorH : public Matrix {
 
   VectorV transpose() const;
 
-  void fprint(std::ostream &) const;
+  void fprint(std::ostream &) const override;
 };
 
 class VectorV : public Matrix {
@@ -107,5 +107,5 @@ class VectorV : public Matrix {
 
   VectorH transpose() const;
 
-  void fprint(std::ostream &) const /*override*/;
+  void fprint(std::ostream &) const override;
 };

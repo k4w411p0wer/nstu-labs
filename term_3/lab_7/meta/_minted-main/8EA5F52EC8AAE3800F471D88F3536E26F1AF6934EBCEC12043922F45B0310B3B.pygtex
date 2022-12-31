@@ -1,0 +1,9 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{ConstIterator}\PYG{o}{::}\PYG{n}{value\PYGZus{}type}\PYG{+w}{ }\PYG{n}{ConstIterator}\PYG{o}{::}\PYG{k}{operator}\PYG{o}{*}\PYG{p}{()}\PYG{+w}{ }\PYG{k}{const}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{  }\PYG{k}{return}\PYG{+w}{ }\PYG{n}{ssa\PYGZus{}}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{at}\PYG{p}{(}\PYG{n}{position\PYGZus{}}\PYG{p}{);}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{n}{ConstIterator}\PYG{o}{::}\PYG{n}{value\PYGZus{}type}\PYG{+w}{ }\PYG{n}{ConstIterator}\PYG{o}{::}\PYG{k}{operator}\PYG{p}{[](}\PYG{n}{size\PYGZus{}type}\PYG{+w}{ }\PYG{n}{offset}\PYG{p}{)}\PYG{+w}{ }\PYG{k}{const}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{  }\PYG{k}{return}\PYG{+w}{ }\PYG{n}{ssa\PYGZus{}}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{at}\PYG{p}{(}\PYG{n}{position\PYGZus{}}\PYG{+w}{ }\PYG{o}{+}\PYG{+w}{ }\PYG{n}{offset}\PYG{p}{);}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

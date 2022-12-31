@@ -1,0 +1,23 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{ConstIterator}\PYG{+w}{ }\PYG{o}{\PYGZam{}}\PYG{n}{ConstIterator}\PYG{o}{::}\PYG{k}{operator}\PYG{o}{++}\PYG{p}{()}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{  }\PYG{n}{position\PYGZus{}}\PYG{o}{++}\PYG{p}{;}
+\PYG{+w}{  }\PYG{k}{return}\PYG{+w}{ }\PYG{o}{*}\PYG{k}{this}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{n}{ConstIterator}\PYG{+w}{ }\PYG{n}{ConstIterator}\PYG{o}{::}\PYG{k}{operator}\PYG{o}{++}\PYG{p}{(}\PYG{k+kt}{int}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{  }\PYG{n}{ConstIterator}\PYG{+w}{ }\PYG{n+nf}{res}\PYG{p}{(}\PYG{o}{*}\PYG{k}{this}\PYG{p}{);}
+\PYG{+w}{  }\PYG{k}{operator}\PYG{o}{++}\PYG{p}{();}
+\PYG{+w}{  }\PYG{k}{return}\PYG{+w}{ }\PYG{n}{res}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{n}{ConstIterator}\PYG{+w}{ }\PYG{o}{\PYGZam{}}\PYG{n}{ConstIterator}\PYG{o}{::}\PYG{k}{operator}\PYG{o}{\PYGZhy{}\PYGZhy{}}\PYG{p}{()}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{  }\PYG{n}{position\PYGZus{}}\PYG{o}{\PYGZhy{}\PYGZhy{}}\PYG{p}{;}
+\PYG{+w}{  }\PYG{k}{return}\PYG{+w}{ }\PYG{o}{*}\PYG{k}{this}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{n}{ConstIterator}\PYG{+w}{ }\PYG{n}{ConstIterator}\PYG{o}{::}\PYG{k}{operator}\PYG{o}{\PYGZhy{}\PYGZhy{}}\PYG{p}{(}\PYG{k+kt}{int}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{  }\PYG{n}{ConstIterator}\PYG{+w}{ }\PYG{n+nf}{res}\PYG{p}{(}\PYG{o}{*}\PYG{k}{this}\PYG{p}{);}
+\PYG{+w}{  }\PYG{k}{operator}\PYG{o}{\PYGZhy{}\PYGZhy{}}\PYG{p}{();}
+\PYG{+w}{  }\PYG{k}{return}\PYG{+w}{ }\PYG{o}{*}\PYG{k}{this}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

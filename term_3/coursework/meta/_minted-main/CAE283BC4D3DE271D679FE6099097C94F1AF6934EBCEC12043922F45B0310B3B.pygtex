@@ -1,0 +1,16 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{class}\PYG{+w}{ }\PYG{n+nc}{SortedStringArray}\PYG{+w}{ }\PYG{o}{:}\PYG{+w}{ }\PYG{k}{public}\PYG{+w}{ }\PYG{n}{std}\PYG{o}{::}\PYG{n}{fstream}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{  }\PYG{c+cm}{/* ... */}
+\PYG{+w}{  }\PYG{k}{private}\PYG{o}{:}
+\PYG{+w}{  }\PYG{k+kt}{size\PYGZus{}t}\PYG{+w}{ }\PYG{n}{capacity\PYGZus{}}\PYG{p}{;}
+\PYG{+w}{  }\PYG{k+kt}{size\PYGZus{}t}\PYG{+w}{ }\PYG{n}{size\PYGZus{}}\PYG{p}{;}
+\PYG{+w}{  }\PYG{n}{pos\PYGZus{}type}\PYG{+w}{ }\PYG{n}{strings\PYGZus{}}\PYG{p}{;}
+\PYG{+w}{  }\PYG{n}{pos\PYGZus{}type}\PYG{+w}{ }\PYG{n}{offset\PYGZus{}}\PYG{p}{;}
+\PYG{+w}{  }\PYG{c+cm}{/* ... */}
+\PYG{+w}{  }\PYG{k}{class}\PYG{+w}{ }\PYG{n+nc}{FileNotOpen}\PYG{+w}{ }\PYG{o}{:}\PYG{+w}{ }\PYG{k}{public}\PYG{+w}{ }\PYG{n}{std}\PYG{o}{::}\PYG{n}{exception}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{    }\PYG{c+cm}{/* ... */}
+\PYG{+w}{  }\PYG{p}{\PYGZcb{};}
+\PYG{+w}{  }\PYG{k}{struct}\PYG{+w}{ }\PYG{n+nc}{ConstIterator}\PYG{p}{;}
+\PYG{+w}{  }\PYG{c+cm}{/* ... */}
+\PYG{p}{\PYGZcb{};}
+\end{Verbatim}

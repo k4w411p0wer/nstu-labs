@@ -1,0 +1,29 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kt}{void}\PYG{+w}{ }\PYG{n+nf}{SortedStringArray::add}\PYG{p}{(}\PYG{n}{const\PYGZus{}reference}\PYG{+w}{ }\PYG{n}{str}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{  }\PYG{n}{throw\PYGZus{}if\PYGZus{}not\PYGZus{}open}\PYG{p}{();}
+\PYG{+w}{  }\PYG{k}{const}\PYG{+w}{ }\PYG{k}{auto}\PYG{+w}{ }\PYG{n}{size}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{str}\PYG{p}{.}\PYG{n}{size}\PYG{p}{();}
+
+\PYG{+w}{  }\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{size\PYGZus{}}\PYG{+w}{ }\PYG{o}{+}\PYG{+w}{ }\PYG{l+m+mi}{1}\PYG{+w}{ }\PYG{o}{\PYGZgt{}}\PYG{+w}{ }\PYG{n}{capacity\PYGZus{}}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{    }\PYG{n}{\PYGZus{}resize}\PYG{p}{();}
+\PYG{+w}{  }\PYG{p}{\PYGZcb{}}
+
+\PYG{+w}{  }\PYG{n}{pos\PYGZus{}type}\PYG{+w}{ }\PYG{n}{pos}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{offset\PYGZus{}}\PYG{p}{;}
+\PYG{+w}{  }\PYG{n}{\PYGZus{}write}\PYG{p}{(}\PYG{n}{pos}\PYG{p}{,}\PYG{+w}{ }\PYG{k}{reinterpret\PYGZus{}cast}\PYG{o}{\PYGZlt{}}\PYG{k}{const}\PYG{+w}{ }\PYG{k+kt}{char}\PYG{+w}{ }\PYG{o}{*\PYGZgt{}}\PYG{p}{(}\PYG{o}{\PYGZam{}}\PYG{n}{size}\PYG{p}{),}\PYG{+w}{ }\PYG{k}{sizeof}\PYG{p}{(}\PYG{n}{size}\PYG{p}{));}
+\PYG{+w}{  }\PYG{n}{\PYGZus{}write}\PYG{p}{(}\PYG{n}{pos}\PYG{+w}{ }\PYG{o}{+}\PYG{+w}{ }\PYG{k}{sizeof}\PYG{p}{(}\PYG{n}{size}\PYG{p}{),}\PYG{+w}{ }\PYG{n}{str}\PYG{p}{.}\PYG{n}{c\PYGZus{}str}\PYG{p}{(),}\PYG{+w}{ }\PYG{k}{sizeof}\PYG{p}{(}\PYG{k+kt}{char}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{*}\PYG{+w}{ }\PYG{n}{size}\PYG{p}{);}
+\PYG{+w}{  }\PYG{n}{offset\PYGZus{}}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{pos}\PYG{+w}{ }\PYG{o}{+}\PYG{+w}{ }\PYG{k}{sizeof}\PYG{p}{(}\PYG{n}{pos}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{+}\PYG{+w}{ }\PYG{n}{size}\PYG{p}{;}
+
+\PYG{+w}{  }\PYG{k+kt}{long}\PYG{+w}{ }\PYG{k+kt}{long}\PYG{+w}{ }\PYG{n}{position}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{bisect}\PYG{p}{(}\PYG{n}{str}\PYG{p}{);}
+
+\PYG{+w}{  }\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{size\PYGZus{}}\PYG{p}{)}
+\PYG{+w}{    }\PYG{k}{for}\PYG{+w}{ }\PYG{p}{(}\PYG{k+kt}{long}\PYG{+w}{ }\PYG{n}{i}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{p}{(}\PYG{k+kt}{long}\PYG{p}{)}\PYG{n}{size\PYGZus{}}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{+w}{ }\PYG{l+m+mi}{1}\PYG{p}{;}\PYG{+w}{ }\PYG{n}{i}\PYG{+w}{ }\PYG{o}{\PYGZgt{}=}\PYG{+w}{ }\PYG{n}{position}\PYG{p}{;}\PYG{+w}{ }\PYG{o}{\PYGZhy{}\PYGZhy{}}\PYG{n}{i}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{      }\PYG{n}{pos\PYGZus{}type}\PYG{+w}{ }\PYG{n}{buf}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mi}{0}\PYG{p}{;}
+\PYG{+w}{      }\PYG{n}{\PYGZus{}read}\PYG{p}{(}\PYG{n}{strings\PYGZus{}}\PYG{+w}{ }\PYG{o}{+}\PYG{+w}{ }\PYG{n}{i}\PYG{+w}{ }\PYG{o}{*}\PYG{+w}{ }\PYG{k}{sizeof}\PYG{p}{(}\PYG{n}{buf}\PYG{p}{),}\PYG{+w}{ }\PYG{k}{reinterpret\PYGZus{}cast}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{char}\PYG{+w}{ }\PYG{o}{*\PYGZgt{}}\PYG{p}{(}\PYG{o}{\PYGZam{}}\PYG{n}{buf}\PYG{p}{),}
+\PYG{+w}{            }\PYG{k}{sizeof}\PYG{p}{(}\PYG{n}{buf}\PYG{p}{));}
+\PYG{+w}{      }\PYG{n}{\PYGZus{}write}\PYG{p}{(}\PYG{n}{strings\PYGZus{}}\PYG{+w}{ }\PYG{o}{+}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{i}\PYG{+w}{ }\PYG{o}{+}\PYG{+w}{ }\PYG{l+m+mi}{1}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{*}\PYG{+w}{ }\PYG{k}{sizeof}\PYG{p}{(}\PYG{n}{buf}\PYG{p}{),}
+\PYG{+w}{             }\PYG{k}{reinterpret\PYGZus{}cast}\PYG{o}{\PYGZlt{}}\PYG{k}{const}\PYG{+w}{ }\PYG{k+kt}{char}\PYG{+w}{ }\PYG{o}{*\PYGZgt{}}\PYG{p}{(}\PYG{o}{\PYGZam{}}\PYG{n}{buf}\PYG{p}{),}\PYG{+w}{ }\PYG{k}{sizeof}\PYG{p}{(}\PYG{n}{buf}\PYG{p}{));}
+\PYG{+w}{    }\PYG{p}{\PYGZcb{}}
+\PYG{+w}{  }\PYG{n}{\PYGZus{}write}\PYG{p}{(}\PYG{n}{strings\PYGZus{}}\PYG{+w}{ }\PYG{o}{+}\PYG{+w}{ }\PYG{n}{position}\PYG{+w}{ }\PYG{o}{*}\PYG{+w}{ }\PYG{k}{sizeof}\PYG{p}{(}\PYG{n}{pos}\PYG{p}{),}
+\PYG{+w}{         }\PYG{k}{reinterpret\PYGZus{}cast}\PYG{o}{\PYGZlt{}}\PYG{k}{const}\PYG{+w}{ }\PYG{k+kt}{char}\PYG{+w}{ }\PYG{o}{*\PYGZgt{}}\PYG{p}{(}\PYG{o}{\PYGZam{}}\PYG{n}{pos}\PYG{p}{),}\PYG{+w}{ }\PYG{k}{sizeof}\PYG{p}{(}\PYG{n}{pos}\PYG{p}{));}
+\PYG{+w}{  }\PYG{o}{++}\PYG{n}{size\PYGZus{}}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

@@ -80,10 +80,7 @@ void CircularQueueOfMatrix::fprint(std::ostream &os) {
       break;
     }
     os << "(" << num++ << "): " << std::endl;
-    static_cast<Matrix>(iterator->getMatrix()).fprint(os);
-    // iterator->getMatrix().fprint(os);
-    // std::cout << iterator<< " " << iterator->getNext() << " " << _head <<
-    // std::endl;
+    iterator->getMatrix().fprint(os);
     iterator = iterator->getNext();
   } while (iterator != _head);
 }
